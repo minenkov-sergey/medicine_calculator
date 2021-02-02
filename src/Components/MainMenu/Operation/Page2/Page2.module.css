@@ -1,0 +1,12 @@
+.buttons {
+  background-color: rgb(137, 137, 247);
+  color: white;
+}
+
+.button {
+  color: white !important
+}
+
+.nextButton {
+  background-color: rgb(122, 122, 245);
+}
