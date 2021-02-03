@@ -1,42 +1,117 @@
-import React from "react";
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import styles from './Page3.module.css'
 
-const Page3 = () => {
-    let history = useHistory();
+const Page3 = (props) => {
 
-    const handleClickNext = () => {
-        history.push("/operation/page4");
+    const checkButtonsPressed = () => {
+        return true
     }
-    const handleClickPrev = () => {
-        history.push("/operation/page2");
+
+    const [buttonStatus, setButtonStatus] = useState(true);
+    useEffect(() => {
+        if (checkButtonsPressed()) {
+            setButtonStatus(false);
+        }
+    },[]);
+
+
+    const onNext = () => {
+        let pageResult = {
+            cMedic: +props.cMedic,
+            cInfection: +props.cInfection,
+            cZone: +props.cZone,
+            cPsycho: +props.cPsycho,
+            cBleeding: +props.cBleeding,
+            text: props.text
+        }
+        props.onNext(pageResult)
+    };
+
+    const handleSymptoms = (e) => {
+        if(e.target.check === 'true') {
+            e.target.check ='false'
+            return
+        } else {
+            e.target.check = 'true'
+            let number = e.target.value
+            console.log(number)}
+            
     }
+
     return (
 
-        <div>
-            <span>Симптомы</span>
-            <div>
-                <button>Кашель</button>
-                <button>Хрипы</button>
-                <button>Рвота/диарея</button>
-                <button>Резкая боль</button>
-                <button>Длительная боль</button>
-                <button>Мигрень</button>
-                <button>Кровян. выделения</button>
-                <button>Слабость</button>
-                <button>Потеря крови</button>
-                <button>Галлюцинации</button>
-                <button>Амнезия</button>
-                <button>Потеря чувствительности</button>
-                <button>Головокружение</button>
-                <button>Жар/Озноб</button>
-                <button>Тремор</button>
-                <button>Нестандартное поведение</button>
-                <button>Сонливость/Апатия</button>
-                <button>Недавнее облучение</button>
-                <button>Недавний контакт с артефактами</button>
+        <div className={styles.page3}>
+            <span className={styles.header}>Симптомы</span>
+            <div className={`btn-group ${styles.symptoms}`} role="group" onChange={handleSymptoms}>
+                <input type="checkbox" className={`btn-check`} id="symptom1" autoComplete="off" value={'1,2,1,0,1,кашель'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom1">Кашель</label>
+
+                <input type="checkbox" className="btn-check" id="symptom2" autoComplete="off" value={'1,1,1,0,2,хрипы'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom2">Хрипы</label>
+
+                <input type="checkbox" className="btn-check" id="symptom3" autoComplete="off" value={'1,3,2,0,0,рвота'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom3">Рвота/диарея</label>
+
+                <input type="checkbox" className="btn-check" id="symptom4" autoComplete="off" value={'1,0,2,1,0,резкая боль'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom4">Резкая боль</label>
+                
+                <input type="checkbox" className="btn-check" id="symptom5" autoComplete="off" value={'0,1,1,1,1,длительная боль'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom5">Длительная боль</label>
+
+                <input type="checkbox" className="btn-check" id="symptom6" autoComplete="off" value={'1,1,1,3,0,мигрень'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom6">Мигрень</label>
+
+                <input type="checkbox" className="btn-check" id="symptom7" autoComplete="off" value={'1,1,1,0,3,кровавые выделения'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom7">Кровян. выделения</label>
+
+                <input type="checkbox" className="btn-check" id="symptom8" autoComplete="off" value={'1,2,1,1,0,слабость'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom8">Слабость</label>
+
+                <input type="checkbox" className="btn-check" id="symptom9" autoComplete="off" value={'0,2,1,0,3,потеря крови'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom9">Потеря крови</label>
+
+                <input type="checkbox" className="btn-check" id="symptom10" autoComplete="off" value={'1,0,2,3,0,галлюцинации'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom10">Галлюцинации</label>
+
+                <input type="checkbox" className={`btn-check`} id="symptom11" autoComplete="off" value={'1,0,2,3,0,амнезия'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom11">Амнезия</label>
+
+                <input type="checkbox" className="btn-check" id="symptom12" autoComplete="off" value={'1,2,2,1,0,потеря чувствительности'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom12">Потеря чувствительности</label>
+
+                <input type="checkbox" className="btn-check" id="symptom13" autoComplete="off" value={'1,0,1,1,1,головокружение'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom13">Головокружение</label>
+
+                <input type="checkbox" className="btn-check" id="symptom14" autoComplete="off" value={'1,2,1,0,1,озноб'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom14">Жар/Озноб</label>
+
+                <input type="checkbox" className="btn-check" id="symptom15" autoComplete="off" value={'0,1,1,2,0,тремор'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom15">Тремор</label>
+
+                <input type="checkbox" className="btn-check" id="symptom16" autoComplete="off" value={'1,0,2,3,0,неадекватное поведение'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom16">Нестандартное поведение</label>
+
+                <input type="checkbox" className="btn-check" id="symptom17" autoComplete="off" value={'1,1,2,2,0,апатия'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom17">Сонливость/Апатия</label>
+
+                <input type="checkbox" className="btn-check" id="symptom18" autoComplete="off" value={'1,0,2,1,0,недавнее облучение'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom18">Недавнее облучение</label>
+
+                <input type="checkbox" className="btn-check" id="symptom19" autoComplete="off" value={'1,1,2,1,0,контакт с артефактами'} check={'false'}/>
+                <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom19">Недавний контакт с артефактами</label>
             </div>
-            <button type="button" onClick={handleClickPrev}>Назад</button>
-            <button type="button" onClick={handleClickNext}>Завершить диагностику</button>
+
+                        <div className={styles.nextButtonBack}>
+                            {buttonStatus ? (
+                                <button variant="contained" onClick={onNext} disabled={true} className={`btn btn-outline-secondary ${styles.buttonText}`}>
+                                    Завершить диагностику
+                                </button>
+                            ) : (
+                                    <button variant="contained" onClick={onNext} disabled={false} className="btn btn-secondary">
+                                        Завершить диагностику
+                                    </button>
+                                )}
+                        </div>
         </div>
 
     )

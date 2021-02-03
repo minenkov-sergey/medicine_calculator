@@ -1,239 +1,144 @@
 import { React, useState, useEffect } from "react";
 
 import styles from "./Page1.module.css";
-import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import { Button } from "@material-ui/core";
-import TestCounter from "./../../../TestCounter/TestCounter";
 
 const Page1 = (props) => {
-  const checkButtonsPressed = () => {
-    return sex && age && bodyType && zoneTime && radiationLevel;
-  };
 
-  const [buttonStatus, setButtonStatus] = useState(true);
-  useEffect(() => {
-    if (checkButtonsPressed()) {
-      setButtonStatus(false);
-    }
-  });
+    const [buttonStatus, setButtonStatus] = useState(true);
 
-  const [sex, setSex] = useState();
-  const handleSex = (event, newSex) => {
-    let basicRandom =
-      Math.floor(Math.random() * (Math.floor(5) - Math.ceil(1) + 1)) +
-      Math.ceil(1);
-    if (newSex === "male") {
-      let rand =
-        Math.floor(Math.random() * (Math.floor(9) - Math.ceil(3) + 1)) +
-        Math.ceil(3);
-      newSex = { diagnoseR: rand, operationR: basicRandom };
-    } else if (newSex === "female") {
-      let rand =
-        Math.floor(Math.random() * (Math.floor(9) - Math.ceil(3) + 1)) +
-        Math.ceil(3);
-      newSex = { operationR: rand, diagnoseR: basicRandom };
-    }
-    setSex(newSex);
-  }
-  const [age, setAge] = useState({});
-  const handleAge = (event, newAge) => {
-    if (newAge <= 25) {
-      newAge = { cMedic: -2, cInfection: -2 };
-    } else if (newAge > 25) {
-      newAge = { cZone: -1, cPsycho: -1, cBleeding: -1 };
-    }
-    setAge(newAge);
-  }
-  const [bodyType, setBodyType] = useState();
-  const handleBodyType = (event, newBodyType) => {
-    if ((newBodyType = "Stubby")) {
-        newBodyType = {cZone: 2, cPsycho: -2}
-    } else if ((newBodyType = "Athletic")) {
-        newBodyType = {cBleeding: 2, cPsycho: 2}
-    } else if ((newBodyType = "Standard")) {
-        newBodyType = {cZone: 1, cPsycho: 1, cBleeding: 1, cMedic: -1, cInfection: -1}
-    } else if ((newBodyType = "Skinny")) {
-        newBodyType = {cBleeding: 2, cZone: -2}
-    }
-    setBodyType(newBodyType);
-  }
-  const [zoneTime, setZoneTime] = useState();
-  const handleZoneTime = (event, newZoneTime) => {
-    if ((newZoneTime = "0.5")) {
-        newZoneTime = {cMedic: 1, cInfection: 1, cZone: -3, cPsycho: 2}
-    } else if ((newZoneTime = "1")) {
-        newZoneTime = {cMedic: 1, cInfection: -1, cZone: 1, cPsycho: 1, cBleeding: -1 }
-    } else if ((newZoneTime = "3")) {
-        newZoneTime = {cMedic: 1, cInfection: -1, cZone: 2, cPsycho: -1, cBleeding: -1 }
-    setZoneTime(newZoneTime);
-  }
-}
-  const [radiationLevel, setRadiationLevel] = useState();
-  const handleRadiationLevel = (event, newRadiationLevel) => {
-    if ((newRadiationLevel = "low")) {
-        newRadiationLevel = {cMedic: -1, cInfection: 1, cZone: 2, cPsycho: -1}
-    } else if ((newRadiationLevel = "middle")) {
-        newRadiationLevel = {cMedic: 1, cInfection: -2, cZone: 1 }
-    } else if ((newRadiationLevel = "high")) {
-        newRadiationLevel = {cMedic: 1, cInfection: -2, cZone: -1, cPsycho: 1 }
-    setRadiationLevel(newRadiationLevel);
-  }
-}
-
-  const onNext = () => {
-    const values = {
-      cMedic: age + bodyType + zoneTime + radiationLevel,
-      cInfection: age + bodyType + zoneTime + radiationLevel,
-      cZone: age + bodyType + zoneTime + radiationLevel,
-      cPsycho: age + bodyType + zoneTime + radiationLevel,
-      cBleeding: age + bodyType + zoneTime + radiationLevel,
-      diagnoseR: sex.diagnoseR,
-      operationR: sex.operationR,
+    const onNext = () => {
+        let pageResult = {
+            cMedic: +sex[0] + +age[0] + +body[0] + +zoneTime[0] + +radiation[0],
+            cInfection: +sex[1] + +age[1] + +body[1] + +zoneTime[1] + +radiation[1],
+            cZone: +sex[2] + +age[2] + +body[2] + +zoneTime[2] + +radiation[2],
+            cPsycho: +sex[3] + +age[3] + +body[3] + +zoneTime[3] + +radiation[3],
+            cBleeding: +sex[4] + +age[4] + +body[4] + +zoneTime[4] + +radiation[4],
+            text: sex[5] + age[5] + body[5] + zoneTime[5] + radiation[5]
+        }
+        props.onNext(pageResult)
     };
 
-    props.onNext(values);
-  };
+    const [sex, setSex] = useState();
+    const handleSex = (e) => {
+        let number = e.target.value.split(',')
+        setSex(number)
+    }
+    const [age, setAge] = useState();
+    const handleAge = (e) => {
+        let number = e.target.value.split(',')
+        setAge(number)
+    }
+    const [body, setBody] = useState();
+    const handleBody = (e) => {
+        let number = e.target.value.split(',')
+        setBody(number)
+    }
+    const [zoneTime, setZoneTime] = useState();
+    const handleZoneTime = (e) => {
+        let number = e.target.value.split(',')
+        setZoneTime(number)
+    }
+    const [radiation, setRadiation] = useState();
+    const handleRadiation = (e) => {
+        let number = e.target.value.split(',')
+        setRadiation(number)
+       
+    }
 
-  return (
-    <div>
-      <span className={styles.header}>Пол</span>
-      <div className={styles.buttons}>
-        <ToggleButtonGroup
-          value={sex}
-          id={sex}
-          exclusive
-          onChange={handleSex}
-          aria-label="sex"
-          className={styles.buttonsGroup}
-          size="small"
-        >
-          <ToggleButton value="male" id="male" className={styles.button}>
-            Мужчина
-          </ToggleButton>
-          <ToggleButton value="female" id="female" className={styles.button}>
-            Женщина
-          </ToggleButton>
-        </ToggleButtonGroup>
-      </div>
-      <span className={styles.header}>Возраст</span>
-      <div className={styles.buttons}>
-        <ToggleButtonGroup
-          value={age}
-          exclusive
-          onChange={handleAge}
-          aria-label="age"
-          className={styles.buttonsGroup}
-          size="small"
-        >
-          <ToggleButton value={"18"} className={styles.button}>
-            до 18
-          </ToggleButton>
-          <ToggleButton value={"24"} className={styles.button}>
-            18 - 25
-          </ToggleButton>
-          <ToggleButton value={"26"} className={styles.button}>
-            26-40
-          </ToggleButton>
-          <ToggleButton value={"41"} className={styles.button}>
-            больше 40
-          </ToggleButton>
-        </ToggleButtonGroup>
-      </div>
-      <span className={styles.header}>Телосложение</span>
-      <div className={styles.buttons}>
-        <ToggleButtonGroup
-          value={bodyType}
-          exclusive
-          onChange={handleBodyType}
-          aria-label="bodyType"
-          className={styles.buttonsGroup}
-          size="small"
-        >
-          <ToggleButton value="Stubby" className={styles.button}>
-            Тучное
-          </ToggleButton>
-          <ToggleButton value="Athletic" className={styles.button}>
-            Атлетичное
-          </ToggleButton>
-          <ToggleButton value="Standard" className={styles.button}>
-            Стандартное
-          </ToggleButton>
-          <ToggleButton value="Skinny" className={styles.button}>
-            Тощее
-          </ToggleButton>
-        </ToggleButtonGroup>
-      </div>
-      <span className={styles.header}>Время проведенное в зоне</span>
-      <div className={styles.buttons}>
-        <ToggleButtonGroup
-          value={zoneTime}
-          exclusive
-          onChange={handleZoneTime}
-          aria-label="zoneTime"
-          className={styles.buttonsGroup}
-          size="small"
-        >
-          <ToggleButton value="0.5" className={styles.button}>
-            Новичек
-          </ToggleButton>
-          <ToggleButton value="1" className={styles.button}>
-            Опытный
-          </ToggleButton>
-          <ToggleButton value="3" className={styles.button}>
-            Бывалый
-          </ToggleButton>
-        </ToggleButtonGroup>
-      </div>
-      <span className={styles.header}>Уровень облучения</span>
-      <div className={styles.buttons}>
-        <ToggleButtonGroup
-          value={radiationLevel}
-          exclusive
-          onChange={handleRadiationLevel}
-          aria-label="radiationLevel"
-          className={styles.buttonsGroup}
-          size="small"
-        >
-          <ToggleButton value="low" className={styles.button}>
-            мало
-          </ToggleButton>
-          <ToggleButton value="middle" className={styles.button}>
-            средне
-          </ToggleButton>
-          <ToggleButton value="high" className={styles.button}>
-            много
-          </ToggleButton>
-        </ToggleButtonGroup>
-      </div>
-      <div className={styles.nextButtonBack}>
-        
-        {buttonStatus ? (
-          <Button
-            variant="contained"
-            onClick={onNext}
-            disabled={true}
-            className={styles.nextButtonOff}
-          >
-            Далее
-          </Button>
-        ) : (
-          <Button
-            variant="contained"
-            onClick={onNext}
-            disabled={false}
-            className={styles.nextButtonOn}
-          >
-            Далее
-          </Button>
-        )}
-      </div>
-      <div>
-        <TestCounter />
-      </div>
-    </div>
-  );
+    // values Template = {
+    //     cMedic - 1,
+    //     cInfection - 2,
+    //     cZone - 3, 
+    //     cPsycho - 4,
+    //     cBleeding - 5,
+    //     text - 6
+    // }
+
+    useEffect(() => {
+        if (sex && age && body && zoneTime && radiation) {
+            setButtonStatus(false);
+        }
+    },[sex, age, body, zoneTime, radiation]);
+
+    return (
+        <div className={styles.page1}>
+            <span className={styles.header}>Пол</span>
+            <div className="btn-group" role="group" onChange={handleSex}>
+                <input type="radio" className="btn-check" name="sex" id="sex1"  autoComplete="off" value={'0,0,0,0,0,Мужчина/'}/>
+                <label className="btn btn-outline-secondary" htmlFor="sex1">Мужчина </label>
+
+                <input type="radio" className="btn-check" name="sex" id="sex2"  autoComplete="off" value={'0,0,0,0,0,Женщина/'}/>
+                <label className="btn btn-outline-secondary" htmlFor="sex2">Женщина</label>
+            </div>
+
+            <span className={styles.header}>Возраст</span>
+            <div className="btn-group" role="group" onChange={handleAge}>
+                <input type="radio" className="btn-check" name="age" id="age1" autoComplete="off" value={'-2,-2,0,0,0,младше 18/'} />
+                <label className="btn btn-outline-secondary" htmlFor="age1">до 18</label>
+
+                <input type="radio" className="btn-check" name="age" id="age2" autoComplete="off" value={'-2,-2,0,0,0, от 18 до 25/'} />
+                <label className="btn btn-outline-secondary" htmlFor="age2">18 - 25</label>
+
+                <input type="radio" className="btn-check" name="age" id="age3" autoComplete="off" value={'0,0,-1,-1,-1, от 26 до 40/'} />
+                <label className="btn btn-outline-secondary" htmlFor="age3">26-40</label>
+
+                <input type="radio" className="btn-check" name="age" id="age4" autoComplete="off" value={'0,0,-1,-1,-1, старше 40/'} />
+                <label className="btn btn-outline-secondary" htmlFor="age4">больше 40</label>
+
+            </div>
+            <span className={styles.header}>Телосложение</span>
+            <div className="btn-group" role="group" onChange={handleBody}>
+                <input type="radio" className="btn-check" name="body" id="body1" autoComplete="off" value={'0,0,2,-2,0,Тучное/'} />
+                <label className="btn btn-outline-secondary" htmlFor="body1">Тучное</label>
+
+                <input type="radio" className="btn-check" name="body" id="body2" autoComplete="off" value={'0,0,0,2,-2,Атлетичное/'} />
+                <label className="btn btn-outline-secondary" htmlFor="body2">Атлетичное</label>
+
+                <input type="radio" className="btn-check" name="body" id="body3" autoComplete="off" value={'-1,-1,-1,1,1,Стандартное/'} />
+                <label className="btn btn-outline-secondary" htmlFor="body3">Стандартное</label>
+
+                <input type="radio" className="btn-check" name="body" id="body4" autoComplete="off" value={'0,0,-2,0,2,Тощее/'} />
+                <label className="btn btn-outline-secondary" htmlFor="body4">Тощее</label>
+            </div>
+
+            <span className={styles.header}>Время проведенное в зоне</span>
+            <div className="btn-group" role="group" onChange={handleZoneTime}>
+                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime1" autoComplete="off" value={'1,1,-3,2,0,Меньше года/'} />
+                <label className="btn btn-outline-secondary" htmlFor="zoneTime1">Меньше года</label>
+
+                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime2" autoComplete="off" value={'1,-1,1,1,-1,от года до трех лет/'}/>
+                <label className="btn btn-outline-secondary" htmlFor="zoneTime2">от года до трех лет</label>
+
+                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime3" autoComplete="off" value={'1,-1,2,-1,-1,более 3х лет/'}/>
+                <label className="btn btn-outline-secondary" htmlFor="zoneTime3">больше 3х лет</label>
+            </div>
+
+            <span className={styles.header}>Уровень облучения</span>
+            <div className="btn-group" role="group" onChange={handleRadiation}>
+                <input type="radio" className="btn-check" name="radLevel" id="radLevel1" autoComplete="off" value={'-1,1,1,-1,0,Слабый/'}/>
+                <label className="btn btn-outline-secondary" htmlFor="radLevel1">Слабое</label>
+
+                <input type="radio" className="btn-check" name="radLevel" id="radLevel2" autoComplete="off" value={'1,-2,1,0,0,Средний/'}/>
+                <label className="btn btn-outline-secondary" htmlFor="radLevel2">Среднее</label>
+
+                <input type="radio" className="btn-check" name="radLevel" id="radLevel3" autoComplete="off" value={'1,-1,2,-1,-1,Сильный/'}/>
+                <label className="btn btn-outline-secondary" htmlFor="radLevel3">Сильное</label>
+            </div>
+
+            <div className={styles.nextButtonBack}>
+                {buttonStatus ? (
+                    <button variant="contained" onClick={onNext} disabled={true} className="btn btn-outline-secondary">
+                        Далее
+                    </button>
+                ) : (
+                    <button variant="contained" onClick={onNext} disabled={false} className="btn btn-secondary">
+                        Далее
+                    </button>
+                    )}
+            </div>
+
+        </div>
+    );
 };
-
 
 export default Page1;

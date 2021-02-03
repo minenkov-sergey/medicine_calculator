@@ -11,11 +11,22 @@ import OperationSuccess from "./OperationResult/OperationSuccess/OperationSucces
 const Operation = () => {
   const [page, setPage] = useState(1);
   const [operResult, setOperResult] = useState(Boolean);
-  const [state, setState] = useState({});
+  const [state, setState] = useState({
+    cMedic: 0,
+    cInfection: 0,
+    cZone: 0,
+    cInfection: 0,
+    cBleeding: 0,
+    text: '',
+
+
+  });
+
   const onNext = (values) => {
     const result = { ...state, ...values };
     setState(result);
     const newPage = page + 1;
+    console.log("result", result);
 
     setPage(newPage);
     if (newPage === 6) {
@@ -43,14 +54,14 @@ const Operation = () => {
 
   return (
     <div>
-      {page === 1 && <Page1 onNext={onNext} />}
-      {page === 2 && <Page2 onNext={onNext} />}
-      {page === 3 && <Page3 onNext={onNext} />}
-      {page === 4 && <Page4 onNext={onNext} />}
-      {page === 5 && <Page5 onNext={onNext} />}
+      {page === 1 && <Page1 {...state} onNext={onNext} />}
+      {page === 2 && <Page2 {...state} onNext={onNext} />}
+      {page === 3 && <Page3 {...state} onNext={onNext} />}
+      {page === 4 && <Page4 {...state} onNext={onNext} />}
+      {page === 5 && <Page5 {...state} onNext={onNext} />}
       {page === 6 && operResult === "fail" && <OperationFailed />}
       {page === 6 && operResult === "success" && <OperationSuccess />}
-      <TestCounter  />
+      <TestCounter {...state} />
     </div>
   );
 };

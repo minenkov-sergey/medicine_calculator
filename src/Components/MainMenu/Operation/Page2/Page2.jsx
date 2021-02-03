@@ -1,83 +1,102 @@
-import React, { useState } from "react";
-import { useHistory } from 'react-router-dom';
-import ToggleButton from '@material-ui/lab/ToggleButton';
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import React, { useState, useEffect } from "react";
 import styles from './Page2.module.css'
-import { Button } from "@material-ui/core";
 
-const Page2 = () => {
-    let history = useHistory();
+const Page2 = (props) => {
 
-    const handleClickNext = () => {
-        if(checkButtonsPressed ()) {
-        history.push("/operation/page3")
+    const [buttonStatus, setButtonStatus] = useState(true);
+    
+
+    const onNext = () => {
+        let pageResult = {
+            cMedic: +props.cMedic + +woundTime[0] + +woundType[0] + +woundPlace[0] ,
+            cInfection: +props.cInfection + +woundTime[1] + +woundType[1] + +woundPlace[1] ,
+            cZone: +props.cZone + +woundTime[2] + +woundType[2] + +woundPlace[2] ,
+            cPsycho: +props.cPsycho + +woundTime[3] + +woundType[3] + +woundPlace[3] ,
+            cBleeding: +props.cBleeding + +woundTime[4] + +woundType[4] + +woundPlace[4] ,
+            text: props.text + woundTime[5] + woundType[5] + woundPlace[5]
         }
-    }
-    const checkButtonsPressed = () => {
-        return woundTime && woundType && woundPlace
-    }
+        props.onNext(pageResult)
+    };
 
+    
     const [woundTime, setWoundTime] = useState();
-    const handleWoundTime = (event, newWoundTime) => {
-        setWoundTime(newWoundTime);
+    const handleWoundTime = (e) => {
+        let number = e.target.value.split(',')
+        setWoundTime(number);
     }
 
     const [woundType, setwoundType] = useState();
-    const handleWoundType = (event, newWoundType) => {
-        setwoundType(newWoundType);
+    const handleWoundType = (e) => {
+        let number = e.target.value.split(',')
+        setwoundType(number);
     }
 
     const [woundPlace, setWoundPlace] = useState();
-    const handleWoundPlace = (event, newWoundPlace) => {
-        setWoundPlace(newWoundPlace);
+    const handleWoundPlace = (e) => {
+        let number = e.target.value.split(',')
+        setWoundPlace(number);
     }
+
+    useEffect(() => {
+        if (woundTime && woundType && woundPlace) {
+            setButtonStatus(false);
+        }
+    },[woundTime, woundType, woundPlace]);
+
     return (
-        <div>
-            <span><h3>Время с момента получения ранения (минуты)</h3></span>
-            <div>
-                <ToggleButtonGroup
-                    value={woundTime}
-                    exclusive
-                    onChange={handleWoundTime}
-                    aria-label="woundTime"
-                    className={styles.buttons}
-                >
-                    <ToggleButton value="30" className={styles.button}>{'< 30'} </ToggleButton>
-                    <ToggleButton value="45" className={styles.button}> 30 - 50 </ToggleButton>
-                    <ToggleButton value="60" className={styles.button}> 50 - 90 </ToggleButton>
-                    <ToggleButton value="90" className={styles.button}> {'> 90'} </ToggleButton>
-                </ToggleButtonGroup>
+        <div className={styles.page2}>
+            <span className={styles.header}>Время с момента получения ранения (минуты)</span>
+            <div className="btn-group" role="group" onChange={handleWoundTime}>
+                <input type="radio" className="btn-check" name="time" id="time1"  autoComplete="off" value={'0,0,0,0,0,Менее 30'}/>
+                <label className="btn btn-outline-secondary" htmlFor="time1">Менее 30</label>
+
+                <input type="radio" className="btn-check" name="time" id="time2"  autoComplete="off" value={'0,0,0,0,0,от 30 до 45'}/>
+                <label className="btn btn-outline-secondary" htmlFor="time2">от 30 до 45</label>
+
+                <input type="radio" className="btn-check" name="time" id="time3"  autoComplete="off" value={'0,0,0,0,0,от 45 до 90'}/>
+                <label className="btn btn-outline-secondary" htmlFor="time3">от 45 до 90</label>
+
+                <input type="radio" className="btn-check" name="time" id="time4"  autoComplete="off" value={'0,0,0,0,0,более 90'}/>
+                <label className="btn btn-outline-secondary" htmlFor="time4">более 90</label>
             </div>
-            <span><h3>Тип ранения</h3></span>
-            <div>
-                <ToggleButtonGroup
-                    value={woundType}
-                    exclusive
-                    onChange={handleWoundType}
-                    aria-label="woundType"
-                    className={styles.buttons}
-                >
-                    <ToggleButton value="gunshot" className={styles.button}>Огнестрельное</ToggleButton>
-                    <ToggleButton value="knife" className={styles.button}>Ножевое</ToggleButton>
-                    <ToggleButton value="anyWound" className={styles.button}>Иного характера</ToggleButton>
-                </ToggleButtonGroup>
+            <span className={styles.header}>Тип ранения</span>
+            <div className="btn-group" role="group" onChange={handleWoundType}>
+                <input type="radio" className="btn-check" name="type" id="type1"  autoComplete="off" value={'0,0,0,0,0,Огнестрельное'}/>
+                <label className="btn btn-outline-secondary" htmlFor="type1">Огнестрельное</label>
+
+                <input type="radio" className="btn-check" name="type" id="type2"  autoComplete="off" value={'0,0,0,0,0,Ножевое'}/>
+                <label className="btn btn-outline-secondary" htmlFor="type2">Ножевое</label>
+
+                <input type="radio" className="btn-check" name="type" id="type3"  autoComplete="off" value={'0,0,0,0,0,Иного характера'}/>
+                <label className="btn btn-outline-secondary" htmlFor="type3">Иного характера</label>
+
             </div>
-            <span><h3>Место ранения</h3></span>
-            <div>
-                <ToggleButtonGroup
-                    value={woundPlace}
-                    exclusive
-                    onChange={handleWoundPlace}
-                    aria-label="woundPlace"
-                    className={styles.buttonsWoundPlace}
-                >
-                    <ToggleButton value="head" className={styles.button}>Голова</ToggleButton>
-                    <ToggleButton value="limbs" className={styles.button}>Руки</ToggleButton>
-                    <ToggleButton value="torso" className={styles.button}>Туловище</ToggleButton>
-                    <ToggleButton value="limbs" className={styles.button}>Ноги</ToggleButton>
-                </ToggleButtonGroup>
+            <span className={styles.header}>Место ранения</span>
+            <div className="btn-group" role="group" onChange={handleWoundPlace}>
+                <input type="radio" className="btn-check" name="place" id="place1"  autoComplete="off" value={'0,0,0,0,0,Голову'}/>
+                <label className="btn btn-outline-secondary" htmlFor="place1">Голова</label>
+
+                <input type="radio" className="btn-check" name="place" id="place2"  autoComplete="off" value={'0,0,0,0,0,руку'}/>
+                <label className="btn btn-outline-secondary" htmlFor="place2">Руки</label>
+
+                <input type="radio" className="btn-check" name="place" id="place3"  autoComplete="off" value={'0,0,0,0,0,туловища'}/>
+                <label className="btn btn-outline-secondary" htmlFor="place3">Туловище</label>
+
+                <input type="radio" className="btn-check" name="place" id="place4"  autoComplete="off" value={'0,0,0,0,0,ноги'}/>
+                <label className="btn btn-outline-secondary" htmlFor="place4">Ноги</label>
             </div>
-            <Button variant="contained" color="secondary" onClick={handleClickNext}>Далее</Button>
+
+            <div className={styles.nextButtonBack}>
+                {buttonStatus ? (
+                    <button variant="contained" onClick={onNext} disabled={true} className="btn btn-outline-secondary">
+                        Далее
+                    </button>
+                ) : (
+                    <button variant="contained" onClick={onNext} disabled={false} className="btn btn-secondary">
+                        Далее
+                    </button>
+                    )}
+            </div>
         </div>
     )
 }
