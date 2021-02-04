@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import Page1 from "./Page1/Page1";
 import TestCounter from "../../TestCounter/TestCounter";
 import Page2 from "./Page2/Page2";
@@ -15,12 +15,49 @@ const Operation = () => {
     cMedic: 0,
     cInfection: 0,
     cZone: 0,
-    cInfection: 0,
+    cPsycho: 0,
     cBleeding: 0,
     text: '',
-
-
+    medicSkill: 1,
+    diagnoseSkill: 0,
+    operationSkill: 0,
+    randomD: 0,
+    randomO: 0,
+    diagnoseResult: ''
   });
+
+  useEffect ( () => {
+    let stateC = {...state}
+    if (page === 4) {
+      let stateArr = Object.values(stateC).slice(0,5).sort(function(a,b) {return a-b})
+      console.log(stateArr)
+      let maxComplication = stateArr[4]
+      console.log(maxComplication)
+      let predMaxComplication = stateArr[3]
+      console.log(predMaxComplication)
+      let diagnoseFinal = stateC.diagnoseSkill + stateC.randomD
+      console.log(diagnoseFinal)
+      if(diagnoseFinal > maxComplication) {
+        stateC.diagnoseResult='Блестящий диагноз, оперировать будет значительно проще'
+        stateC.operationSkill +=5
+      } else if (diagnoseFinal === maxComplication ) {
+        stateC.diagnoseResult='Качественный диагноз. Операция обещает протекать спокойно'
+        stateC.operationSkill +=3
+      } else if ( (diagnoseFinal < maxComplication) && (diagnoseFinal > predMaxComplication) ) {
+        stateC.diagnoseResult='Смешанный диагноз. Операция будет не из простых'
+        stateC.operationSkill -=2
+      } else if ( (diagnoseFinal / 2) < predMaxComplication ) {
+        stateC.diagnoseResult='Посредственный диагноз. Операция будет тяжелой'
+        stateC.operationSkill -=10
+      } else if (diagnoseFinal < predMaxComplication ){
+        stateC.diagnoseResult='Провальный диагноз. Вряд ли пациент доживёт до конца'
+        stateC.operationSkill -=5
+      }
+      console.log(stateC)
+    const result = { ...state, ...stateC };
+    setState(result);
+    }
+  },[page])
 
   const onNext = (values) => {
     const result = { ...state, ...values };
@@ -36,20 +73,6 @@ const Operation = () => {
 
   const onSubmit = (result) => {
     console.log("result", result);
-  };
-  const updateComplications = (answer) => {
-    return { ...this.state, ...answer };
-  };
-  const getRandom = () => {
-    let randomNumber = Math.random * 10;
-    return randomNumber;
-  };
-  const clearComplications = () => {
-    this.store.cBleeding = 0;
-    this.store.cMedicError = 0;
-    this.store.cInfection = 0;
-    this.store.cZone = 0;
-    this.store.cMedicError = 0;
   };
 
   return (

@@ -6,6 +6,12 @@ const Page1 = (props) => {
 
     const [buttonStatus, setButtonStatus] = useState(true);
 
+    const getRandom = (min, max) => {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+      }
+
     const onNext = () => {
         let pageResult = {
             cMedic: +sex[0] + +age[0] + +body[0] + +zoneTime[0] + +radiation[0],
@@ -14,6 +20,13 @@ const Page1 = (props) => {
             cPsycho: +sex[3] + +age[3] + +body[3] + +zoneTime[3] + +radiation[3],
             cBleeding: +sex[4] + +age[4] + +body[4] + +zoneTime[4] + +radiation[4],
             text: sex[5] + age[5] + body[5] + zoneTime[5] + radiation[5]
+        }
+        if (sex[5] === 'Мужчина/') {
+            pageResult.randomD = getRandom(3,9)
+            pageResult.randomO = getRandom(1,5)
+        } else {
+            pageResult.randomD = getRandom(1,5)
+            pageResult.randomO = getRandom(3,9)
         }
         props.onNext(pageResult)
     };
@@ -45,19 +58,10 @@ const Page1 = (props) => {
        
     }
 
-    // values Template = {
-    //     cMedic - 1,
-    //     cInfection - 2,
-    //     cZone - 3, 
-    //     cPsycho - 4,
-    //     cBleeding - 5,
-    //     text - 6
-    // }
-
     useEffect(() => {
         if (sex && age && body && zoneTime && radiation) {
             setButtonStatus(false);
-        }
+        } else {setButtonStatus(true)}
     },[sex, age, body, zoneTime, radiation]);
 
     return (
