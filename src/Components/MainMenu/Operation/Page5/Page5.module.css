@@ -1,0 +1,46 @@
+.page5{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer {
+  margin: 20px;
+  font-size: 40px;
+}
+
+
+.nextButtonBack {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+.header {
+  text-align: center;
+  font-size: 30px;
+  font-family: Roboto;
+  color:rgb(212, 179, 102)
+}
+
+.heart {
+  margin: 20px;
+  padding: 30px;
+  width: 90%;
+  opacity: 0.5;
+}
+
+.heartActive {
+  margin: 20px;
+  padding: 30px;
+  width: 90%;
+  opacity: 1;
+}
+
+.heart img{
+  width: 100%;
+}
+.heartActive img{
+  width: 100%;
+}
