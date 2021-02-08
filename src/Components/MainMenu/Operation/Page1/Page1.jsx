@@ -77,7 +77,7 @@ const Page1 = (props) => {
 
             <span className={styles.header}>Возраст</span>
             <div className="btn-group" role="group" onChange={handleAge}>
-                <input type="radio" className="btn-check" name="age" id="age1" autoComplete="off" value={'-2,-2,0,0,0,младше 18/'} />
+                <input type="radio" className="btn-check" name="age" id="age1" autoComplete="off" value={'-2,-2,0,0,0, младше 18/'} />
                 <label className="btn btn-outline-secondary" htmlFor="age1">до 18</label>
 
                 <input type="radio" className="btn-check" name="age" id="age2" autoComplete="off" value={'-2,-2,0,0,0, от 18 до 25/'} />
@@ -92,16 +92,16 @@ const Page1 = (props) => {
             </div>
             <span className={styles.header}>Телосложение</span>
             <div className="btn-group" role="group" onChange={handleBody}>
-                <input type="radio" className="btn-check" name="body" id="body1" autoComplete="off" value={'0,0,2,-2,0,Тучное/'} />
+                <input type="radio" className="btn-check" name="body" id="body1" autoComplete="off" value={'0,0,2,-2,0,тучное/'} />
                 <label className="btn btn-outline-secondary" htmlFor="body1">Тучное</label>
 
-                <input type="radio" className="btn-check" name="body" id="body2" autoComplete="off" value={'0,0,0,2,-2,Атлетичное/'} />
+                <input type="radio" className="btn-check" name="body" id="body2" autoComplete="off" value={'0,0,0,2,-2,атлетичное/'} />
                 <label className="btn btn-outline-secondary" htmlFor="body2">Атлетичное</label>
 
-                <input type="radio" className="btn-check" name="body" id="body3" autoComplete="off" value={'-1,-1,-1,1,1,Стандартное/'} />
+                <input type="radio" className="btn-check" name="body" id="body3" autoComplete="off" value={'-1,-1,-1,1,1,стандартное/'} />
                 <label className="btn btn-outline-secondary" htmlFor="body3">Стандартное</label>
 
-                <input type="radio" className="btn-check" name="body" id="body4" autoComplete="off" value={'0,0,-2,0,2,Тощее/'} />
+                <input type="radio" className="btn-check" name="body" id="body4" autoComplete="off" value={'0,0,-2,0,2,тощее/'} />
                 <label className="btn btn-outline-secondary" htmlFor="body4">Тощее</label>
             </div>
 

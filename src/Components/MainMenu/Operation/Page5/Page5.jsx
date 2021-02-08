@@ -1,20 +1,61 @@
-import React from "react";
-import { useHistory } from 'react-router-dom';
+import React, { useState } from "react";
+import { useEffect } from "react";
+import styles from './Page5.module.css'
+import heart from '../../../../assets/heart.png'
 
-const Page5 = () => {
+const Page5 = (props) => {
 
-    let history = useHistory();
+    const [timer, setTimer] = useState(300)
+    
+    let minutes = Math.floor(timer/60)
+    let seconds = Math.floor(timer%60)
 
-    const handleClickNext = () => { 
-        history.push("/operation/page6");
+    const [heartAttack, setHeartAttack] = useState(false)
+    
+    useEffect( () => { 
+        let id = setInterval( () => {
+            if(timer>0){
+                setTimer(timer - 1)
+                if(Math.random()> 0.97) setHeartAttack(true)
+            } else {
+                setHeartAttack(false)
+                clearInterval(id)}
+        }, 1000)
+        return () => clearInterval(id)
+    })
+
+    const handleClick = () => {
+        setHeartAttack(false)
     }
 
+    const onNext = () => {
+        let pageResult = {
+             
+        }
+        props.onNext(pageResult)
+    };
+
+    
+
+
     return (
-        <div>
-            <span>Операция</span>
-            <span>Здесь таймер</span>
-            <div> Сердечко </div>
-            <button type="button" onClick={handleClickNext}>Завершить операцию</button>
+        <div className={styles.page5}>
+            <span className={styles.header}>Операция</span>
+            <div className={styles.timer}>{'0' + minutes}:{seconds <= 9? '0' + seconds : seconds}</div>
+            
+            <div className={heartAttack? styles.heartActive : styles.heart} onClick={handleClick}><img src={heart}></img></div>
+
+            <div className={styles.nextButtonBack}>
+                {timer > 0 ? (
+                    <button variant="contained" onClick={onNext} disabled={true} className="btn btn-outline-secondary">
+                        Далее
+                    </button>
+                ) : (
+                    <button variant="contained" onClick={onNext} disabled={false} className="btn btn-secondary">
+                        Далее
+                    </button>
+                    )}
+            </div>
         </div>
     )
 }

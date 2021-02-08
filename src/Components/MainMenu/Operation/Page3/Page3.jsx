@@ -86,52 +86,52 @@ const Page3 = (props) => {
                 <input type="checkbox" className="btn-check" id="symptom3" autoComplete="off" value={'1,3,2,0,0,рвота/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom3">Рвота/диарея</label>
 
-                <input type="checkbox" className="btn-check" id="symptom4" autoComplete="off" value={'1,0,2,1,0,резкая боль/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom4" autoComplete="off" value={'1,0,2,1,0, резкая боль/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom4">Резкая боль</label>
                 
-                <input type="checkbox" className="btn-check" id="symptom5" autoComplete="off" value={'0,1,1,1,1,длительная боль/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom5" autoComplete="off" value={'0,1,1,1,1, длительная боль/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom5">Длительная боль</label>
 
-                <input type="checkbox" className="btn-check" id="symptom6" autoComplete="off" value={'1,1,1,3,0,мигрень'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom6" autoComplete="off" value={'1,1,1,3,0, мигрень'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom6">Мигрень</label>
 
-                <input type="checkbox" className="btn-check" id="symptom7" autoComplete="off" value={'1,1,1,0,3,кровавые выделения/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom7" autoComplete="off" value={'1,1,1,0,3, кровавые выделения/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom7">Кровян. выделения</label>
 
-                <input type="checkbox" className="btn-check" id="symptom8" autoComplete="off" value={'1,2,1,1,0,слабость/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom8" autoComplete="off" value={'1,2,1,1,0, слабость/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom8">Слабость</label>
 
-                <input type="checkbox" className="btn-check" id="symptom9" autoComplete="off" value={'0,2,1,0,3,потеря крови/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom9" autoComplete="off" value={'0,2,1,0,3, потеря крови/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom9">Потеря крови</label>
 
-                <input type="checkbox" className="btn-check" id="symptom10" autoComplete="off" value={'1,0,2,3,0,галлюцинации/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom10" autoComplete="off" value={'1,0,2,3,0, галлюцинации/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom10">Галлюцинации</label>
 
-                <input type="checkbox" className={`btn-check`} id="symptom11" autoComplete="off" value={'1,0,2,3,0,амнезия/'} check={'false'}/>
+                <input type="checkbox" className={`btn-check`} id="symptom11" autoComplete="off" value={'1,0,2,3,0, амнезия/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom11">Амнезия</label>
 
-                <input type="checkbox" className="btn-check" id="symptom12" autoComplete="off" value={'1,2,2,1,0,потеря чувствительности/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom12" autoComplete="off" value={'1,2,2,1,0, потеря чувствительности/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom12">Потеря чувствительности</label>
 
-                <input type="checkbox" className="btn-check" id="symptom13" autoComplete="off" value={'1,0,1,1,1,головокружение/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom13" autoComplete="off" value={'1,0,1,1,1, головокружение/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom13">Головокружение</label>
 
-                <input type="checkbox" className="btn-check" id="symptom14" autoComplete="off" value={'1,2,1,0,1,озноб/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom14" autoComplete="off" value={'1,2,1,0,1, озноб/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom14">Жар/Озноб</label>
 
-                <input type="checkbox" className="btn-check" id="symptom15" autoComplete="off" value={'0,1,1,2,0,тремор/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom15" autoComplete="off" value={'0,1,1,2,0, тремор/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom15">Тремор</label>
 
-                <input type="checkbox" className="btn-check" id="symptom16" autoComplete="off" value={'1,0,2,3,0,неадекватное поведение/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom16" autoComplete="off" value={'1,0,2,3,0, неадекватное поведение/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom16">Нестандартное поведение</label>
 
-                <input type="checkbox" className="btn-check" id="symptom17" autoComplete="off" value={'1,1,2,2,0,апатия/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom17" autoComplete="off" value={'1,1,2,2,0, апатия/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom17">Сонливость/Апатия</label>
 
-                <input type="checkbox" className="btn-check" id="symptom18" autoComplete="off" value={'1,0,2,1,0,недавнее облучение/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom18" autoComplete="off" value={'1,0,2,1,0, недавнее облучение/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom18">Недавнее облучение</label>
 
-                <input type="checkbox" className="btn-check" id="symptom19" autoComplete="off" value={'1,1,2,1,0,контакт с артефактами/'} check={'false'}/>
+                <input type="checkbox" className="btn-check" id="symptom19" autoComplete="off" value={'1,1,2,1,0, контакт с артефактами/'} check={'false'}/>
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom19">Недавний контакт с артефактами</label>
             </div>
 

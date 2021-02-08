@@ -28,6 +28,9 @@ const Page4 = (props) => {
         props.onNext(pageResult)
     };
 
+    const textArr = props.text.split('/')
+    const textSypmtoms = textArr.slice(8)
+
     useEffect(() => {
         if (operationPlace && morphin) {
             setButtonStatus(false);
@@ -39,6 +42,14 @@ const Page4 = (props) => {
             {console.log(props)}
             <span className={styles.header}>Результат диагностики</span>
             <span className={styles.text}>{props.diagnoseResult}</span>
+            <span className={styles.text}>{`Пациент: ${textArr[0]} 
+            в возрасте ${textArr[1]}, 
+            телосложение - ${textArr[2]}, 
+            в зоне находится ${textArr[3]}, 
+            уровень радиационного поражения - ${textArr[4]}.
+            Травма получена ${textArr[5]} минут, 
+            тип раны: ${textArr[6]} в область ${textArr[7]}.
+            Симптомы: ${textSypmtoms} `}</span>
 
             <br></br>
 
@@ -46,19 +57,19 @@ const Page4 = (props) => {
 
             <span className={styles.header}>Место операции</span>
             <div className="btn-group" role="group" onChange={handleMorphine}>
-                <input type="radio" className="btn-check" name="operationPlace" id="operationPlace1"  autoComplete="off" value={'0,0,0,0,0,Менее 30/,2'}/>
+                <input type="radio" className="btn-check" name="operationPlace" id="operationPlace1"  autoComplete="off" value={''}/>
                 <label className="btn btn-outline-secondary" htmlFor="operationPlace1">Поле</label>
 
-                <input type="radio" className="btn-check" name="operationPlace" id="operationPlace2"  autoComplete="off" value={'0,0,0,0,0,от 30 до 45/,0'}/>
+                <input type="radio" className="btn-check" name="operationPlace" id="operationPlace2"  autoComplete="off" value={''}/>
                 <label className="btn btn-outline-secondary" htmlFor="operationPlace2">Лазарет</label>
             </div>
 
             <span className={styles.header}>Применение анестезии</span>
             <div className="btn-group" role="group" onChange={handleOperationPlace}>
-                <input type="radio" className="btn-check" name="morphin" id="morphin1"  autoComplete="off" value={'0,0,0,0,0,Менее 30/,2'}/>
+                <input type="radio" className="btn-check" name="morphin" id="morphin1"  autoComplete="off" value={''}/>
                 <label className="btn btn-outline-secondary" htmlFor="morphin1">Да</label>
 
-                <input type="radio" className="btn-check" name="morphin" id="morphin2"  autoComplete="off" value={'0,0,0,0,0,от 30 до 45/,0'}/>
+                <input type="radio" className="btn-check" name="morphin" id="morphin2"  autoComplete="off" value={''}/>
                 <label className="btn btn-outline-secondary" htmlFor="morphin2">Нет</label>
             </div>
 

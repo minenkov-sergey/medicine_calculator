@@ -10,7 +10,7 @@ import OperationSuccess from "./OperationResult/OperationSuccess/OperationSucces
 
 const Operation = () => {
   const [page, setPage] = useState(1);
-  const [operResult, setOperResult] = useState(Boolean);
+  const [operResult, setOperResult] = useState('');
   const [state, setState] = useState({
     cMedic: 0,
     cInfection: 0,
@@ -23,7 +23,9 @@ const Operation = () => {
     operationSkill: 0,
     randomD: 0,
     randomO: 0,
-    diagnoseResult: ''
+    diagnoseResult: '',
+    morphine: 0,
+    operationPlace: 0,
   });
 
   useEffect ( () => {
@@ -57,6 +59,13 @@ const Operation = () => {
     const result = { ...state, ...stateC };
     setState(result);
     }
+    if(page === 6) {
+      if((stateC.operationSkill + stateC.morphine + stateC.operationPlace + stateC.randomO) > 5 ) {
+        setOperResult('success')
+      } else {
+        setOperResult('failed')
+      }
+    }
   },[page])
 
   const onNext = (values) => {
@@ -66,9 +75,9 @@ const Operation = () => {
     console.log("result", result);
 
     setPage(newPage);
-    if (newPage === 6) {
-      onSubmit(result);
-    }
+    // if (newPage === 6) {
+    //   onSubmit(result);
+    // }
   };
 
   const onSubmit = (result) => {
@@ -82,7 +91,7 @@ const Operation = () => {
       {page === 3 && <Page3 {...state} onNext={onNext} />}
       {page === 4 && <Page4 {...state} onNext={onNext} />}
       {page === 5 && <Page5 {...state} onNext={onNext} />}
-      {page === 6 && operResult === "fail" && <OperationFailed />}
+      {page === 6 && operResult === "failed" && <OperationFailed />}
       {page === 6 && operResult === "success" && <OperationSuccess />}
       <TestCounter {...state} />
     </div>
@@ -90,21 +99,3 @@ const Operation = () => {
 };
 
 export default Operation;
-
-
-
-// {
-//   cMedic: 0,
-//   cInfection: 0,
-//   cZone: 0,
-//   cPsycho: 0,
-//   cBleeding: 0,
-//   medicSkill: 1,
-//   diagnoseSkill: 0,
-//   diagnoseR: 0,
-//   operationSkill: 0,
-//   operationR: 0,
-//   diagnoseResult: null,
-//   operationResult: null,
-//   Random: 0,
-// }
