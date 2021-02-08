@@ -16,7 +16,7 @@ const Page5 = (props) => {
         let id = setInterval( () => {
             if(timer>0){
                 setTimer(timer - 1)
-                if(Math.random()> 0.97) setHeartAttack(true)
+                if(Math.random()> 0.98) setHeartAttack(true)
             } else {
                 setHeartAttack(false)
                 clearInterval(id)}
