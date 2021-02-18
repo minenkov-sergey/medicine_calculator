@@ -98,8 +98,8 @@ const Page1 = (props) => {
                 <input type="radio" className="btn-check" name="body" id="body2" autoComplete="off" value={'0,0,0,2,-2,атлетичное/'} />
                 <label className="btn btn-outline-secondary" htmlFor="body2">Атлетичное</label>
 
-                <input type="radio" className="btn-check" name="body" id="body3" autoComplete="off" value={'-1,-1,-1,1,1,стандартное/'} />
-                <label className="btn btn-outline-secondary" htmlFor="body3">Стандартное</label>
+                <input type="radio" className="btn-check" name="body" id="body3" autoComplete="off" value={'-1,-1,-1,1,1,среднее/'} />
+                <label className="btn btn-outline-secondary" htmlFor="body3">Среднее</label>
 
                 <input type="radio" className="btn-check" name="body" id="body4" autoComplete="off" value={'0,0,-2,0,2,тощее/'} />
                 <label className="btn btn-outline-secondary" htmlFor="body4">Тощее</label>

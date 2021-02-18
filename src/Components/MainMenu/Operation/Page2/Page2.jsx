@@ -75,7 +75,7 @@ const Page2 = (props) => {
             <span className={styles.header}>Место ранения</span>
             <div className={`btn-group ${styles.manequin}`} role="group" onChange={handleWoundPlace}>
                 <input type="radio" className={`btn-check`} name="place" id="place1"  autoComplete="off" value={'1,1,0,0,0,головы/'}/>
-                <label className={`btn btn-outline-secondary ${styles.head} `} htmlFor="place1">Голова</label>
+                <label className={`btn btn-outline-secondary ${styles.head} `} htmlFor="place1"></label>
 
                 <input type="radio" className={`btn-check `} name="place" id="place2"  autoComplete="off" value={'1,1,0,0,0,руки/'}/>
                 <label className={`btn btn-outline-secondary ${styles.hands}`} htmlFor="place2">Руки</label>

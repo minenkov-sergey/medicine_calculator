@@ -93,7 +93,7 @@ const Operation = () => {
       {page === 5 && <Page5 {...state} onNext={onNext} />}
       {page === 6 && operResult === "failed" && <OperationFailed />}
       {page === 6 && operResult === "success" && <OperationSuccess />}
-      <TestCounter {...state} />
+      {/* <TestCounter {...state} /> */}
     </div>
   );
 };

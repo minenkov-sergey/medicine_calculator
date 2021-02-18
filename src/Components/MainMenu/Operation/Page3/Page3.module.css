@@ -1,6 +1,7 @@
 .page3{
   display: flex;
   flex-direction: column;
+  overflow: scroll;
 }
 .symptoms {
   display: grid;
