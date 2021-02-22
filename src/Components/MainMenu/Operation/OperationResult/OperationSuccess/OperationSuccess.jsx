@@ -10,7 +10,7 @@ const Operation = () => {
 
     return (<div>
         <div>Operation Success</div>
-    <button onClick={hadleClick}>Спасибо бля</button>
+    <button onClick={hadleClick}>Operation Success</button>
     </div>)
 }
 

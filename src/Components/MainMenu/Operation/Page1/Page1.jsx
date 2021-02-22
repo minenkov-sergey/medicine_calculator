@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
-
 import styles from "./Page1.module.css";
+import NextButton from '../../../Button/NextButton/NextButton';
 
 const Page1 = (props) => {
 
@@ -128,19 +128,13 @@ const Page1 = (props) => {
                 <input type="radio" className="btn-check" name="radLevel" id="radLevel3" autoComplete="off" value={'1,-1,2,-1,-1,Сильный/'}/>
                 <label className="btn btn-outline-secondary" htmlFor="radLevel3">Сильное</label>
             </div>
-
-            <div className={styles.nextButtonBack}>
-                {buttonStatus ? (
-                    <button variant="contained" onClick={onNext} disabled={true} className="btn btn-outline-secondary">
-                        Далее
-                    </button>
-                ) : (
-                    <button variant="contained" onClick={onNext} disabled={false} className="btn btn-secondary">
-                        Далее
-                    </button>
-                    )}
-            </div>
-
+            
+                <NextButton 
+                text='Далее' 
+                onNext={onNext} 
+                disabled={buttonStatus} 
+                className={buttonStatus ?("btn btn-outline-secondary"):("btn btn-secondary")} 
+                />
         </div>
     );
 };

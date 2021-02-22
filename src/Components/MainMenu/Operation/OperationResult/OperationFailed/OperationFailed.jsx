@@ -10,7 +10,7 @@ const Operation = () => {
     }
     return (<div>
         <div>Operation Failed</div>
-    <button onClick={hadleClick}>Спасибо нахуй, я умер</button>
+    <button onClick={hadleClick}>Operation Failed</button>
     </div>
     )
 }
