@@ -16,7 +16,12 @@ const Page5 = (props) => {
         let id = setInterval( () => {
             if(timer>0){
                 setTimer(timer - 1)
-                if(Math.random()> 0.98) setHeartAttack(true)
+                if(Math.random()> 0.98) {
+                    setHeartAttack(true)
+                    while(heartAttack){
+                        window.navigator.vibrate([50, 50, 50, 100]);
+                    }
+                }
             } else {
                 setHeartAttack(false)
                 clearInterval(id)}
