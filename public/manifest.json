@@ -2,12 +2,13 @@
   "name": "Медицинский калькулятор",
   "short_name": "MedicCalc",
   "lang": "ru-RU",
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#414546",
   "background_color": "#ffffff",
   "orientation": "portrait",
   "categories": ["game"],
+  "scope": "/",
   "description": "App made for MG'Recursion' for Stalker gameproject",
   "icons": [
     {
