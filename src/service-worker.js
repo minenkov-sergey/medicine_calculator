@@ -73,7 +73,8 @@ let CACHE_NAME = 'my-site-cache-v1';
 let urlsToCache = [
   '/',
   '/src/index.css',
-  '/src/index.js'
+  '/src/index.js',
+  '/assets/'
 ];
 
 self.addEventListener('install', function (event) {
