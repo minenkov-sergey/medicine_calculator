@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from './Page2.module.css'
 import NextButton from './../../../Button/NextButton/NextButton';
+import head from '../../../../assets/head.png'
+import body from '../../../../assets/body.png'
+import arms from '../../../../assets/arms.png'
+import legs from '../../../../assets/legs.png'
 
 const Page2 = (props) => {
 
@@ -76,26 +80,27 @@ const Page2 = (props) => {
             <span className={styles.header}>Место ранения</span>
             <div className={`btn-group ${styles.manequin}`} role="group" onChange={handleWoundPlace}>
                 <input type="radio" className={`btn-check`} name="place" id="place1" autoComplete="off" value={'1,1,0,0,0,головы/'} />
-                <label className={`btn btn-outline-secondary ${styles.head} `} htmlFor="place1"></label>
+                <label className={`btn btn-outline-secondary ${styles.head} `} htmlFor="place1"><img src={head} alt='head' /></label>
 
                 <input type="radio" className={`btn-check `} name="place" id="place2" autoComplete="off" value={'1,1,0,0,0,руки/'} />
-                <label className={`btn btn-outline-secondary ${styles.hands}`} htmlFor="place2">Руки</label>
+                <label className={`btn btn-outline-secondary ${styles.hands}`} htmlFor="place2"><img src={arms} alt='arms' /></label>
 
                 <input type="radio" className={`btn-check `} name="place" id="place3" autoComplete="off" value={'1,1,2,0,0,туловища/'} />
-                <label className={`btn btn-outline-secondary ${styles.body}`} htmlFor="place3">Туловище</label>
+                <label className={`btn btn-outline-secondary ${styles.body}`} htmlFor="place3"><img src={body} alt='body' /></label>
 
                 <input type="radio" className={`btn-check `} name="place" id="place4" autoComplete="off" value={'1,1,0,0,0,ноги/'} />
-                <label className={`btn btn-outline-secondary ${styles.legs}`} htmlFor="place4">Ноги</label>
+                <label className={`btn btn-outline-secondary ${styles.legs}`} htmlFor="place4"><img src={legs} alt='legs' /></label>
+            </div>
+            <div className={styles.nextButton}>
+                <NextButton
+                    text='Далее'
+                    onNext={onNext}
+                    disabled={buttonStatus}
+                    className={buttonStatus ? ("btn btn-outline-secondary") : ("btn btn-secondary")}
+                />
             </div>
 
-            <NextButton
-                text='Далее'
-                onNext={onNext}
-                disabled={buttonStatus}
-                className={buttonStatus ? ("btn btn-outline-secondary") : ("btn btn-secondary")}
-            />
-
-        </div>
+        </div >
     )
 }
 

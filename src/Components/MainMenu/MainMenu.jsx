@@ -1,5 +1,6 @@
-import { React } from 'react';
-import { useHistory,  withRouter } from 'react-router-dom';
+import { useHistory, withRouter } from 'react-router-dom';
+import styles from './MainMenu.module.css'
+
 
 const MainMenu = () => {
 
@@ -9,8 +10,11 @@ const MainMenu = () => {
         history.push('/operation/');
     }
     return (
-        <div>
-            <button onClick={handleClickOperation}>Начать операцию</button>
+        <div className={styles.mainMenu}>
+            <button className="btn btn-secondary" onClick={handleClickOperation}>Начать операцию</button>
+            <button className="btn btn-outline-secondary" >Проверить навыки</button>
+            <button className="btn btn-outline-secondary" >Добавить снаряжение</button>
+            <button className="btn btn-secondary" >Статистика</button>
         </div>
 
     )

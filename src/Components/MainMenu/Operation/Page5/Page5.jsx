@@ -20,7 +20,7 @@ const Page5 = (props) => {
                 setTimer(timer - 1)
                 if (Math.random() > 0.98) {
                     setHeartAttack(true)
-                    window.navigator.vibrate([100, 100, 100, 300, 100, 100, 100, 300, 100, 100, 100, 300, 100, 100, 100, 300, 100, 100, 100, 300]);
+                    window.navigator.vibrate([200, 100, 250, 500, 200, 100, 250, 500, 200, 100, 250, 500, 200, 100, 250, 500]);
                 }
             } else {
                 setHeartAttack(false)
@@ -47,14 +47,15 @@ const Page5 = (props) => {
             <span className={styles.header}>Операция</span>
             <div className={styles.timer}>{'0' + minutes}:{seconds <= 9 ? '0' + seconds : seconds}</div>
 
-            <div className={heartAttack ? styles.heartActive : styles.heart} onClick={handleClick}><img src={heart}></img></div>
-
-            <NextButton
-                text='Далее'
-                onNext={onNext}
-                disabled={timer > 0}
-                className={timer > 0 ? ("btn btn-outline-secondary") : ("btn btn-secondary")}
-            />
+            <div className={heartAttack ? styles.heartActive : styles.heart} onClick={handleClick}><img src={heart} alt='heart'></img></div>
+            <div className={styles.nextButton}>
+                <NextButton
+                    text='Далее'
+                    onNext={onNext}
+                    disabled={timer > 0}
+                    className={timer > 0 ? ("btn btn-outline-secondary") : ("btn btn-secondary")}
+                />
+            </div>
         </div>
     )
 }

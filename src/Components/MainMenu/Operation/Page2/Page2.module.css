@@ -1,10 +1,11 @@
-.page2{
+.page2 {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: fit-content;
+  align-content: space-around;
+  width: inherit;
+  height: 100vh;
+  padding: 2%;
 }
-
 
 .header {
   margin-top: 2%;
@@ -12,34 +13,48 @@
   margin-left: 5%;
   font-size: 20px;
   font-family: Roboto;
-  color:rgb(212, 179, 102)
+  color: rgb(212, 179, 102)
 }
-.manequin{
-  display: flex;
+
+.manequin {
+  display: inline-flex;
   flex-direction: column;
   margin: auto;
   align-items: center;
-  width: 70%;
-  height: 70%;
-  height: 200%;
+  width: 65%;
 }
-.manequin .head {
-  background-image: url('../../../../assets/head.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 13vh;
-  width: 30%;
+
+.manequin label {
+  display: inline-block;
+  border: 0;
+  padding: 0;
+  width: inherit;
 }
-.manequin .hands {
-  height: 20%;
-  width: 80%;
-  
-}
-.manequin .body {
-  height: 40%;
+
+.manequin .head img {
   width: 50%;
 }
-.manequin .legs {
-  height: 20%;
-  width: 80%;
+
+.manequin .hands {
+  z-index: 0;
+  position: absolute;
+  top: 26%;
+  width: 140%;
+}
+
+.manequin .hands img {
+  width: 100%;
+}
+
+.manequin .body img {
+  width: inherit;
+}
+
+.manequin .legs img {
+  width: inherit;
+}
+
+.nextButton {
+  align-items: center;
+  margin-top: auto;
 }

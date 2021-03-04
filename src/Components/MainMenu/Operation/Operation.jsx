@@ -5,12 +5,11 @@ import Page2 from "./Page2/Page2";
 import Page3 from "./Page3/Page3";
 import Page4 from "./Page4/Page4";
 import Page5 from "./Page5/Page5";
-import OperationFailed from "./OperationResult/OperationFailed/OperationFailed";
-import OperationSuccess from "./OperationResult/OperationSuccess/OperationSuccess";
+import OperationResult from "./OperationResult/OperationResult";
 
 const Operation = () => {
   const [page, setPage] = useState(1);
-  const [operResult, setOperResult] = useState('');
+  const [isOperationSucces, setOperationSucces] = useState('');
   const [state, setState] = useState({
     cMedic: 0,
     cInfection: 0,
@@ -28,10 +27,10 @@ const Operation = () => {
     operationPlace: 0,
   });
 
-  useEffect ( () => {
-    let stateC = {...state}
+  useEffect(() => {
+    let stateC = { ...state }
     if (page === 4) {
-      let stateArr = Object.values(stateC).slice(0,5).sort(function(a,b) {return a-b})
+      let stateArr = Object.values(stateC).slice(0, 5).sort(function (a, b) { return a - b })
       console.log(stateArr)
       let maxComplication = stateArr[4]
       console.log(maxComplication)
@@ -39,34 +38,35 @@ const Operation = () => {
       console.log(predMaxComplication)
       let diagnoseFinal = stateC.diagnoseSkill + stateC.randomD
       console.log(diagnoseFinal)
-      if(diagnoseFinal > maxComplication) {
-        stateC.diagnoseResult='Блестящий диагноз, оперировать будет значительно проще'
-        stateC.operationSkill +=5
-      } else if (diagnoseFinal === maxComplication ) {
-        stateC.diagnoseResult='Качественный диагноз. Операция обещает протекать спокойно'
-        stateC.operationSkill +=3
-      } else if ( (diagnoseFinal < maxComplication) && (diagnoseFinal > predMaxComplication) ) {
-        stateC.diagnoseResult='Смешанный диагноз. Операция будет не из простых'
-        stateC.operationSkill -=2
-      } else if ( (diagnoseFinal / 2) < predMaxComplication ) {
-        stateC.diagnoseResult='Посредственный диагноз. Операция будет тяжелой'
-        stateC.operationSkill -=10
-      } else if (diagnoseFinal < predMaxComplication ){
-        stateC.diagnoseResult='Провальный диагноз. Вряд ли пациент доживёт до конца'
-        stateC.operationSkill -=5
+      if (diagnoseFinal > maxComplication) {
+        stateC.diagnoseResult = 'Блестящий диагноз, оперировать будет значительно проще'
+        stateC.operationSkill += 5
+      } else if (diagnoseFinal === maxComplication) {
+        stateC.diagnoseResult = 'Качественный диагноз. Операция обещает протекать спокойно'
+        stateC.operationSkill += 3
+      } else if ((diagnoseFinal < maxComplication) && (diagnoseFinal > predMaxComplication)) {
+        stateC.diagnoseResult = 'Смешанный диагноз. Операция будет не из простых'
+        stateC.operationSkill -= 2
+      } else if ((diagnoseFinal / 2) < predMaxComplication) {
+        stateC.diagnoseResult = 'Посредственный диагноз. Операция будет тяжелой'
+        stateC.operationSkill -= 10
+      } else if (diagnoseFinal < predMaxComplication) {
+        stateC.diagnoseResult = 'Провальный диагноз. Вряд ли пациент доживёт до конца'
+        stateC.operationSkill -= 5
       }
       console.log(stateC)
-    const result = { ...state, ...stateC };
-    setState(result);
+      const result = { ...state, ...stateC };
+      setState(result);
     }
-    if(page === 6) {
-      if((stateC.operationSkill + stateC.morphine + stateC.operationPlace + stateC.randomO) > 5 ) {
-        setOperResult('success')
+    if (page === 6) {
+      if ((stateC.operationSkill + stateC.morphine + stateC.operationPlace + stateC.randomO) > 5) {
+        setOperationSucces(true)
       } else {
-        setOperResult('failed')
+        setOperationSucces(false)
       }
     }
-  },[page])
+    // eslint-disable-next-line
+  }, [page])
 
   const onNext = (values) => {
     const result = { ...state, ...values };
@@ -91,8 +91,7 @@ const Operation = () => {
       {page === 3 && <Page3 {...state} onNext={onNext} />}
       {page === 4 && <Page4 {...state} onNext={onNext} />}
       {page === 5 && <Page5 {...state} onNext={onNext} />}
-      {page === 6 && operResult === "failed" && <OperationFailed />}
-      {page === 6 && operResult === "success" && <OperationSuccess />}
+      {page === 6 && <OperationResult isOperationSucces={isOperationSucces} />}
       {/* <TestCounter {...state} /> */}
     </div>
   );

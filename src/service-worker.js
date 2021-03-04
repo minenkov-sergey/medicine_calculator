@@ -74,7 +74,12 @@ let urlsToCache = [
   '/',
   '/src/index.css',
   '/src/index.js',
-  '/assets/'
+  '/assets/background.webp',
+  '/assets/head.png',
+  '/assets/body.png',
+  '/assets/arms.png',
+  '/assets/legs.png',
+
 ];
 
 self.addEventListener('install', function (event) {

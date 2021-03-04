@@ -10,7 +10,7 @@ const Page1 = (props) => {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
-      }
+    }
 
     const onNext = () => {
         let pageResult = {
@@ -22,11 +22,11 @@ const Page1 = (props) => {
             text: sex[5] + age[5] + body[5] + zoneTime[5] + radiation[5]
         }
         if (sex[5] === 'Мужчина/') {
-            pageResult.randomD = getRandom(3,9)
-            pageResult.randomO = getRandom(1,5)
+            pageResult.randomD = getRandom(3, 9)
+            pageResult.randomO = getRandom(1, 5)
         } else {
-            pageResult.randomD = getRandom(1,5)
-            pageResult.randomO = getRandom(3,9)
+            pageResult.randomD = getRandom(1, 5)
+            pageResult.randomO = getRandom(3, 9)
         }
         props.onNext(pageResult)
     };
@@ -55,23 +55,23 @@ const Page1 = (props) => {
     const handleRadiation = (e) => {
         let number = e.target.value.split(',')
         setRadiation(number)
-       
+
     }
 
     useEffect(() => {
         if (sex && age && body && zoneTime && radiation) {
             setButtonStatus(false);
-        } else {setButtonStatus(true)}
-    },[sex, age, body, zoneTime, radiation]);
+        } else { setButtonStatus(true) }
+    }, [sex, age, body, zoneTime, radiation]);
 
     return (
         <div className={styles.page1}>
             <span className={styles.header}>Пол</span>
             <div className="btn-group" role="group" onChange={handleSex}>
-                <input type="radio" className="btn-check" name="sex" id="sex1"  autoComplete="off" value={'0,0,0,0,0,Мужчина/'}/>
+                <input type="radio" className="btn-check" name="sex" id="sex1" autoComplete="off" value={'0,0,0,0,0,Мужчина/'} />
                 <label className="btn btn-outline-secondary" htmlFor="sex1">Мужчина </label>
 
-                <input type="radio" className="btn-check" name="sex" id="sex2"  autoComplete="off" value={'0,0,0,0,0,Женщина/'}/>
+                <input type="radio" className="btn-check" name="sex" id="sex2" autoComplete="off" value={'0,0,0,0,0,Женщина/'} />
                 <label className="btn btn-outline-secondary" htmlFor="sex2">Женщина</label>
             </div>
 
@@ -110,31 +110,32 @@ const Page1 = (props) => {
                 <input type="radio" className="btn-check" name="zoneTime" id="zoneTime1" autoComplete="off" value={'1,1,-3,2,0,Меньше года/'} />
                 <label className="btn btn-outline-secondary" htmlFor="zoneTime1">Меньше года</label>
 
-                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime2" autoComplete="off" value={'1,-1,1,1,-1,от года до трех лет/'}/>
+                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime2" autoComplete="off" value={'1,-1,1,1,-1,от года до трех лет/'} />
                 <label className="btn btn-outline-secondary" htmlFor="zoneTime2">от года до трех лет</label>
 
-                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime3" autoComplete="off" value={'1,-1,2,-1,-1,более 3х лет/'}/>
+                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime3" autoComplete="off" value={'1,-1,2,-1,-1,более 3х лет/'} />
                 <label className="btn btn-outline-secondary" htmlFor="zoneTime3">больше 3х лет</label>
             </div>
 
             <span className={styles.header}>Уровень облучения</span>
             <div className="btn-group" role="group" onChange={handleRadiation}>
-                <input type="radio" className="btn-check" name="radLevel" id="radLevel1" autoComplete="off" value={'-1,1,1,-1,0,Слабый/'}/>
+                <input type="radio" className="btn-check" name="radLevel" id="radLevel1" autoComplete="off" value={'-1,1,1,-1,0,Слабый/'} />
                 <label className="btn btn-outline-secondary" htmlFor="radLevel1">Слабое</label>
 
-                <input type="radio" className="btn-check" name="radLevel" id="radLevel2" autoComplete="off" value={'1,-2,1,0,0,Средний/'}/>
+                <input type="radio" className="btn-check" name="radLevel" id="radLevel2" autoComplete="off" value={'1,-2,1,0,0,Средний/'} />
                 <label className="btn btn-outline-secondary" htmlFor="radLevel2">Среднее</label>
 
-                <input type="radio" className="btn-check" name="radLevel" id="radLevel3" autoComplete="off" value={'1,-1,2,-1,-1,Сильный/'}/>
+                <input type="radio" className="btn-check" name="radLevel" id="radLevel3" autoComplete="off" value={'1,-1,2,-1,-1,Сильный/'} />
                 <label className="btn btn-outline-secondary" htmlFor="radLevel3">Сильное</label>
             </div>
-            
-                <NextButton 
-                text='Далее' 
-                onNext={onNext} 
-                disabled={buttonStatus} 
-                className={buttonStatus ?("btn btn-outline-secondary"):("btn btn-secondary")} 
+            <div className={styles.nextButton}>
+                <NextButton
+                    text='Далее'
+                    onNext={onNext}
+                    disabled={buttonStatus}
+                    className={buttonStatus ? ("btn btn-outline-secondary") : ("btn btn-secondary")}
                 />
+            </div>
         </div>
     );
 };

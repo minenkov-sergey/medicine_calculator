@@ -1,6 +1,5 @@
 
 import { React } from 'react';
-import styles from './TestCounter.module.css'
 const TestCounter = (props) => {
     return (
         <div >

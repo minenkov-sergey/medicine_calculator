@@ -1,28 +1,34 @@
-.page5{
+.page5 {
   display: flex;
   flex-direction: column;
+  align-content: space-around;
   align-items: center;
-  width: fit-content;
+  width: inherit;
+  height: 100vh;
+  padding: 2%;
 }
 
 .timer {
   margin: 20px;
   font-size: 40px;
+  color: whitesmoke
 }
 
-
 .header {
-  text-align: center;
   font-size: 30px;
   font-family: Roboto;
-  color:rgb(212, 179, 102)
+  color: rgb(212, 179, 102)
 }
 
 .heart {
   margin: 20px;
   padding: 30px;
   width: 90%;
-  opacity: 0.5;
+  opacity: 0.4;
+}
+
+.heart img {
+  width: 100%;
 }
 
 .heartActive {
@@ -32,9 +38,11 @@
   opacity: 1;
 }
 
-.heart img{
+.heartActive img {
   width: 100%;
 }
-.heartActive img{
-  width: 100%;
+
+.nextButton {
+  align-items: center;
+  margin-top: auto;
 }

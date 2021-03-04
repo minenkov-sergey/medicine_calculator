@@ -1,0 +1,29 @@
+.operResult {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    width: inherit;
+    height: 100vh;
+    padding: 2%;
+}
+
+.operationText {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 18px;
+    color: rgb(255, 215, 122);
+}
+
+h2 {
+    text-align: center;
+    color: rgb(255, 215, 122);
+}
+
+.endOperation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2%;
+    align-items: center;
+    margin-top: auto;
+}

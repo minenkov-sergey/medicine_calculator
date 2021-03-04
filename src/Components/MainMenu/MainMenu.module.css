@@ -1,0 +1,15 @@
+.mainMenu {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-around;
+    flex: 2 1 auto;
+    width: inherit;
+    height: 100vh;
+    padding: 2%;
+}
+
+.mainMenu button {
+    margin: 5%;
+    flex: 1 1 auto;
+}

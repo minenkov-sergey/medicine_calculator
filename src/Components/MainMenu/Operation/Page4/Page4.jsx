@@ -42,13 +42,14 @@ const Page4 = (props) => {
         <div className={styles.page4}>
             {console.log(props)}
             <span className={styles.header}>Результат диагностики</span>
-            <span className={styles.text}>{props.diagnoseResult}</span>
-            <span className={styles.text}>{`Пациент: ${textArr[0]} 
-            в возрасте ${textArr[1]}, 
-            телосложение - ${textArr[2]}, 
-            в зоне находится ${textArr[3]}, 
+            <span className={styles.textDiagnose}>{props.diagnoseResult}</span>
+            <span className={styles.text}>
+                {`Пациент: ${textArr[0]}
+            в возрасте ${textArr[1]},
+            телосложение - ${textArr[2]},
+            в зоне находится ${textArr[3]},
             уровень радиационного поражения - ${textArr[4]}.
-            Травма получена ${textArr[5]} минут, 
+            Травма получена ${textArr[5]} минут,
             тип раны: ${textArr[6]} в область ${textArr[7]}.
             Симптомы: ${textSypmtoms} `}</span>
 
@@ -73,13 +74,14 @@ const Page4 = (props) => {
                 <input type="radio" className="btn-check" name="morphin" id="morphin2" autoComplete="off" value={''} />
                 <label className="btn btn-outline-secondary" htmlFor="morphin2">Нет</label>
             </div>
-
-            <NextButton
-                text='Завершить диагностику'
-                onNext={onNext}
-                disabled={buttonStatus}
-                className={buttonStatus ? ("btn btn-outline-secondary") : ("btn btn-secondary")}
-            />
+            <div className={styles.nextButton}>
+                <NextButton
+                    text='Завершить диагностику'
+                    onNext={onNext}
+                    disabled={buttonStatus}
+                    className={buttonStatus ? ("btn btn-outline-secondary") : ("btn btn-secondary")}
+                />
+            </div>
 
         </div>
     )

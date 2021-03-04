@@ -135,13 +135,14 @@ const Page3 = (props) => {
                 <input type="checkbox" className="btn-check" id="symptom19" autoComplete="off" value={'1,1,2,1,0, контакт с артефактами/'} check={'false'} />
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom19">Недавний контакт с артефактами</label>
             </div>
-
-            <NextButton
-                text='Далее'
-                onNext={onNext}
-                disabled={buttonStatus}
-                className={buttonStatus ? ("btn btn-outline-secondary") : ("btn btn-secondary")}
-            />
+            <div className={styles.nextButton}>
+                <NextButton
+                    text='Далее'
+                    onNext={onNext}
+                    disabled={buttonStatus}
+                    className={buttonStatus ? ("btn btn-outline-secondary") : ("btn btn-secondary")}
+                />
+            </div>
         </div>
 
     )
