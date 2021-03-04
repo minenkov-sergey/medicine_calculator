@@ -12,7 +12,7 @@ const TestCounter = (props) => {
             <div>Осложнение Кровотечение : {props.cBleeding}</div>
             <div>Рандом осложнения : {props.randomO}</div>
             <div>Рандом диагностики : {props.randomD}</div>
-            <div>Навык операции : {props.operationSkill}</div>
+            <div>Навык операции : {props.operationSkill} </div>
             <div>Навык диагностики : {props.diagnoseSkill}</div>
         </div>
     )
