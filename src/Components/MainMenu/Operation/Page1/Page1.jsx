@@ -98,7 +98,7 @@ const Page1 = (props) => {
                 <input type="radio" className="btn-check" name="body" id="body2" autoComplete="off" value={'0,0,0,2,-2,атлетичное/'} />
                 <label className="btn btn-outline-secondary" htmlFor="body2">Атлетичное</label>
 
-                <input type="radio" className="btn-check" name="body" id="body3" autoComplete="off" value={'-1,-1,-1,1,1,среднее/'} />
+                <input type="radio" className="btn-check" name="body" id="body3" autoComplete="off" value={'0,0,0,0,0,среднее/'} />
                 <label className="btn btn-outline-secondary" htmlFor="body3">Среднее</label>
 
                 <input type="radio" className="btn-check" name="body" id="body4" autoComplete="off" value={'0,0,-2,0,2,тощее/'} />
@@ -107,25 +107,25 @@ const Page1 = (props) => {
 
             <span className={styles.header}>Время проведенное в зоне</span>
             <div className="btn-group" role="group" onChange={handleZoneTime}>
-                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime1" autoComplete="off" value={'1,1,-3,2,0,Меньше года/'} />
+                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime1" autoComplete="off" value={'0,0,-3,2,0,Меньше года/'} />
                 <label className="btn btn-outline-secondary" htmlFor="zoneTime1">Меньше года</label>
 
-                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime2" autoComplete="off" value={'1,-1,1,1,-1,от года до трех лет/'} />
+                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime2" autoComplete="off" value={'0,0,1,-1,0,от года до трех лет/'} />
                 <label className="btn btn-outline-secondary" htmlFor="zoneTime2">от года до трех лет</label>
 
-                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime3" autoComplete="off" value={'1,-1,2,-1,-1,более 3х лет/'} />
+                <input type="radio" className="btn-check" name="zoneTime" id="zoneTime3" autoComplete="off" value={'0,0,2,-3,0,более 3х лет/'} />
                 <label className="btn btn-outline-secondary" htmlFor="zoneTime3">больше 3х лет</label>
             </div>
 
             <span className={styles.header}>Уровень облучения</span>
             <div className="btn-group" role="group" onChange={handleRadiation}>
-                <input type="radio" className="btn-check" name="radLevel" id="radLevel1" autoComplete="off" value={'-1,1,1,-1,0,Слабый/'} />
+                <input type="radio" className="btn-check" name="radLevel" id="radLevel1" autoComplete="off" value={'0,2,2,0,0,Слабый/'} />
                 <label className="btn btn-outline-secondary" htmlFor="radLevel1">Слабое</label>
 
-                <input type="radio" className="btn-check" name="radLevel" id="radLevel2" autoComplete="off" value={'1,-2,1,0,0,Средний/'} />
+                <input type="radio" className="btn-check" name="radLevel" id="radLevel2" autoComplete="off" value={'0,0,0,0,0,Средний/'} />
                 <label className="btn btn-outline-secondary" htmlFor="radLevel2">Среднее</label>
 
-                <input type="radio" className="btn-check" name="radLevel" id="radLevel3" autoComplete="off" value={'1,-1,2,-1,-1,Сильный/'} />
+                <input type="radio" className="btn-check" name="radLevel" id="radLevel3" autoComplete="off" value={'0,1,1,0,0,Сильный/'} />
                 <label className="btn btn-outline-secondary" htmlFor="radLevel3">Сильное</label>
             </div>
             <div className={styles.nextButton}>

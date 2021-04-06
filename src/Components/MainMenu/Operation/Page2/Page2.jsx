@@ -59,36 +59,36 @@ const Page2 = (props) => {
                 <input type="radio" className="btn-check" name="time" id="time2" autoComplete="off" value={'0,0,0,0,0,от 30 до 45/,0'} />
                 <label className="btn btn-outline-secondary" htmlFor="time2">от 30 до 45</label>
 
-                <input type="radio" className="btn-check" name="time" id="time3" autoComplete="off" value={'0,0,0,0,0,от 45 до 90/,-1'} />
-                <label className="btn btn-outline-secondary" htmlFor="time3">от 45 до 90</label>
+                <input type="radio" className="btn-check" name="time" id="time3" autoComplete="off" value={'0,0,0,0,0,от 45 до 60/,0'} />
+                <label className="btn btn-outline-secondary" htmlFor="time3">от 45 до 60</label>
 
-                <input type="radio" className="btn-check" name="time" id="time4" autoComplete="off" value={'0,0,0,0,0,более 90/,-3'} />
-                <label className="btn btn-outline-secondary" htmlFor="time4">более 90</label>
+                <input type="radio" className="btn-check" name="time" id="time4" autoComplete="off" value={'0,0,0,0,0,более 60/,-3'} />
+                <label className="btn btn-outline-secondary" htmlFor="time4">более 60</label>
             </div>
             <span className={styles.header}>Тип ранения</span>
             <div className="btn-group" role="group" onChange={handleWoundType}>
-                <input type="radio" className="btn-check" name="type" id="type1" autoComplete="off" value={'1,1,0,0,0,Огнестрельное/'} />
+                <input type="radio" className="btn-check" name="type" id="type1" autoComplete="off" value={'3,1,0,2,0,Огнестрельное/'} />
                 <label className="btn btn-outline-secondary" htmlFor="type1">Огнестрельное</label>
 
-                <input type="radio" className="btn-check" name="type" id="type2" autoComplete="off" value={'1,1,1,0,0,Ножевое/'} />
+                <input type="radio" className="btn-check" name="type" id="type2" autoComplete="off" value={'2,2,0,0,2,Ножевое/'} />
                 <label className="btn btn-outline-secondary" htmlFor="type2">Ножевое</label>
 
-                <input type="radio" className="btn-check" name="type" id="type3" autoComplete="off" value={'1,1,1,0,0,Иного характера/'} />
+                <input type="radio" className="btn-check" name="type" id="type3" autoComplete="off" value={'2,5,2,2,2,Иного характера/'} />
                 <label className="btn btn-outline-secondary" htmlFor="type3">Иного характера</label>
 
             </div>
             <span className={styles.header}>Место ранения</span>
             <div className={`btn-group ${styles.manequin}`} role="group" onChange={handleWoundPlace}>
-                <input type="radio" className={`btn-check`} name="place" id="place1" autoComplete="off" value={'1,1,0,0,0,головы/'} />
+                <input type="radio" className={`btn-check`} name="place" id="place1" autoComplete="off" value={'5,1,2,2,0,головы/'} />
                 <label className={`btn btn-outline-secondary ${styles.head} `} htmlFor="place1"><img src={head} alt='head' /></label>
 
-                <input type="radio" className={`btn-check `} name="place" id="place2" autoComplete="off" value={'1,1,0,0,0,руки/'} />
+                <input type="radio" className={`btn-check `} name="place" id="place2" autoComplete="off" value={'1,1,1,0,1,руки/'} />
                 <label className={`btn btn-outline-secondary ${styles.hands}`} htmlFor="place2"><img src={arms} alt='arms' /></label>
 
-                <input type="radio" className={`btn-check `} name="place" id="place3" autoComplete="off" value={'1,1,2,0,0,туловища/'} />
+                <input type="radio" className={`btn-check `} name="place" id="place3" autoComplete="off" value={'3,1,1,0,1,туловища/'} />
                 <label className={`btn btn-outline-secondary ${styles.body}`} htmlFor="place3"><img src={body} alt='body' /></label>
 
-                <input type="radio" className={`btn-check `} name="place" id="place4" autoComplete="off" value={'1,1,0,0,0,ноги/'} />
+                <input type="radio" className={`btn-check `} name="place" id="place4" autoComplete="off" value={'1,1,1,0,1,ноги/'} />
                 <label className={`btn btn-outline-secondary ${styles.legs}`} htmlFor="place4"><img src={legs} alt='legs' /></label>
             </div>
             <div className={styles.nextButton}>

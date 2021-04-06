@@ -39,20 +39,14 @@ const Operation = () => {
       let diagnoseFinal = stateC.diagnoseSkill + stateC.randomD
       console.log(diagnoseFinal)
       if (diagnoseFinal > maxComplication) {
-        stateC.diagnoseResult = 'Блестящий диагноз, оперировать будет значительно проще'
-        stateC.operationSkill += 5
-      } else if (diagnoseFinal === maxComplication) {
         stateC.diagnoseResult = 'Качественный диагноз. Операция обещает протекать спокойно'
         stateC.operationSkill += 3
-      } else if ((diagnoseFinal < maxComplication) && (diagnoseFinal > predMaxComplication)) {
+      } else if (diagnoseFinal === maxComplication) {
         stateC.diagnoseResult = 'Смешанный диагноз. Операция будет не из простых'
-        stateC.operationSkill -= 2
-      } else if ((diagnoseFinal / 2) < predMaxComplication) {
+        stateC.operationSkill += 0
+      } else if (diagnoseFinal < maxComplication) {
         stateC.diagnoseResult = 'Посредственный диагноз. Операция будет тяжелой'
-        stateC.operationSkill -= 10
-      } else if (diagnoseFinal < predMaxComplication) {
-        stateC.diagnoseResult = 'Провальный диагноз. Вряд ли пациент доживёт до конца'
-        stateC.operationSkill -= 5
+        stateC.operationSkill -= 3
       }
       console.log(stateC)
       const result = { ...state, ...stateC };
@@ -92,7 +86,7 @@ const Operation = () => {
       {page === 4 && <Page4 {...state} onNext={onNext} />}
       {page === 5 && <Page5 {...state} onNext={onNext} />}
       {page === 6 && <OperationResult isOperationSucces={isOperationSucces} />}
-      {/* <TestCounter {...state} /> */}
+      <TestCounter {...state} />
     </div>
   );
 };
