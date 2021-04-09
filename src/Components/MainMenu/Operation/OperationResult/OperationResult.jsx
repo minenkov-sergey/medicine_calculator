@@ -25,7 +25,7 @@ const Operation = ({ isOperationSucces }) => {
                 {isOperationSucces ? `${operationSuccess}` : `${operationFailed}`}
             </div>
 
-            <button className={`btn btn-outline-secondary ${styles.endOperation}`} onClick={hadleClick}>Завершить операцию</button>
+            <button className={`btn btn-secondary ${styles.endOperation}`} onClick={hadleClick}>Завершить операцию</button>
         </div>
     )
 }

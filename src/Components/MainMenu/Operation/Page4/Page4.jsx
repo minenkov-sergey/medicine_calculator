@@ -5,14 +5,14 @@ const Page4 = (props) => {
 
     const [buttonStatus, setButtonStatus] = useState(true);
 
-    const [morphin, setMorphin] = useState()
+    const [morphine, setMorphine] = useState()
     const handleMorphine = (e) => {
-        let number = e.target.value.split(',')
-        setMorphin(number);
+        let number = e.target.value
+        setMorphine(number);
     }
     const [operationPlace, setOperationPlace] = useState()
     const handleOperationPlace = (e) => {
-        let number = e.target.value.split(',')
+        let number = e.target.value
         setOperationPlace(number);
     }
 
@@ -24,7 +24,9 @@ const Page4 = (props) => {
             cPsycho: +props.cPsycho,
             cBleeding: +props.cBleeding,
             text: props.text,
-            medicSkill: props.medicSkill
+            medicSkill: props.medicSkill,
+            operationPlace: +operationPlace,
+            morphine: +morphine
         }
         props.onNext(pageResult)
     };
@@ -33,14 +35,13 @@ const Page4 = (props) => {
     const textSypmtoms = textArr.slice(8)
 
     useEffect(() => {
-        if (operationPlace && morphin) {
+        if (operationPlace && morphine) {
             setButtonStatus(false);
         } else { setButtonStatus(true) }
-    }, [operationPlace, morphin]);
+    }, [operationPlace, morphine]);
 
     return (
         <div className={styles.page4}>
-            {console.log(props)}
             <span className={styles.header}>Результат диагностики</span>
             <span className={styles.textDiagnose}>{props.diagnoseResult}</span>
             <span className={styles.text}>
@@ -58,20 +59,20 @@ const Page4 = (props) => {
             <span className={styles.headerOp}>Операция</span>
 
             <span className={styles.header}>Место операции</span>
-            <div className="btn-group" role="group" onChange={handleMorphine}>
-                <input type="radio" className="btn-check" name="operationPlace" id="operationPlace1" autoComplete="off" value={''} />
+            <div className="btn-group" role="group" onChange={handleOperationPlace}>
+                <input type="radio" className="btn-check" name="operationPlace" id="operationPlace1" autoComplete="off" value={'0'} />
                 <label className="btn btn-outline-secondary" htmlFor="operationPlace1">Поле</label>
 
-                <input type="radio" className="btn-check" name="operationPlace" id="operationPlace2" autoComplete="off" value={''} />
+                <input type="radio" className="btn-check" name="operationPlace" id="operationPlace2" autoComplete="off" value={'3'} />
                 <label className="btn btn-outline-secondary" htmlFor="operationPlace2">Лазарет</label>
             </div>
 
-            <span className={styles.header}>Применение анестезии</span>
-            <div className="btn-group" role="group" onChange={handleOperationPlace}>
-                <input type="radio" className="btn-check" name="morphin" id="morphin1" autoComplete="off" value={''} />
+            <span className={styles.header}>Использование электронного медкомплекса</span>
+            <div className="btn-group" role="group" onChange={handleMorphine}>
+                <input type="radio" className="btn-check" name="morphin" id="morphin1" autoComplete="off" value={'4'} />
                 <label className="btn btn-outline-secondary" htmlFor="morphin1">Да</label>
 
-                <input type="radio" className="btn-check" name="morphin" id="morphin2" autoComplete="off" value={''} />
+                <input type="radio" className="btn-check" name="morphin" id="morphin2" autoComplete="off" value={'0'} />
                 <label className="btn btn-outline-secondary" htmlFor="morphin2">Нет</label>
             </div>
             <div className={styles.nextButton}>

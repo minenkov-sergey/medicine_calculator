@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useEffect } from "react";
 import styles from './Page5.module.css'
 import heart from '../../../../assets/heart.png'
@@ -12,15 +12,42 @@ const Page5 = (props) => {
     let seconds = Math.floor(timer % 60)
 
     const [heartAttack, setHeartAttack] = useState(false)
+    const heartData = useRef(null);
+    heartData.current = heartAttack
+    const [heartBeatCount, setHeartBeatCount] = useState(0)
+
+
+    const onNext = () => {
+        let pageResult = {
+            heartBeatCount: +heartBeatCount
+        }
+        props.onNext(pageResult)
+    };
+
+    const heartBeat = () => {
+        window.navigator.vibrate([200, 100, 300, 500, 200, 100, 300, 500, 200, 100, 300, 500, 200, 100, 300, 500, 200, 100, 300, 500]);
+        setTimeout(() => {
+            heartData.current && setHeartBeatCount(heartBeatCount => heartBeatCount - 1)
+            //there is a bug, if heartAttacks going one after another, 
+            //so heartAttack change to false 
+            //cause to affect on next heartAttack sequence 
+            //that happened after previous with success click, 
+            //and player get -1 point almost immediatly(<5sec).
+            //on rate 0.975 its very rare chance to happen.
+            setHeartAttack(heartAttack => false)
+        }, 5000);
+    }
 
     //timer
     useEffect(() => {
         let id = setInterval(() => {
             if (timer > 0) {
                 setTimer(timer - 1)
-                if (Math.random() > 0.98) {
-                    setHeartAttack(true)
-                    window.navigator.vibrate([200, 100, 250, 500, 200, 100, 250, 500, 200, 100, 250, 500, 200, 100, 250, 500]);
+
+                if ((Math.random() > 0.975) && !heartAttack) {
+                    console.log('heartattack')
+                    setHeartAttack(heartAttack => true)
+                    heartBeat()
                 }
             } else {
                 setHeartAttack(false)
@@ -31,20 +58,17 @@ const Page5 = (props) => {
     })
 
     const handleClick = () => {
-        setHeartAttack(false)
-        window.navigator.vibrate([0])
-    }
-
-    const onNext = () => {
-        let pageResult = {
-
+        if (heartData.current) {
+            setHeartAttack(heartAttack => false)
+            window.navigator.vibrate([0])
+            setHeartBeatCount(heartBeatCount => heartBeatCount + 1)
         }
-        props.onNext(pageResult)
-    };
+    }
 
     return (
         <div className={styles.page5}>
             <span className={styles.header}>Операция</span>
+
             <div className={styles.timer}>{'0' + minutes}:{seconds <= 9 ? '0' + seconds : seconds}</div>
 
             <div className={heartAttack ? styles.heartActive : styles.heart} onClick={handleClick}><img src={heart} alt='heart'></img></div>

@@ -16,44 +16,45 @@ const Operation = () => {
     cZone: 0,
     cPsycho: 0,
     cBleeding: 0,
+    maxComplication: 0,
+
     text: '',
-    medicSkill: 1,
+
+    medicSkill: 2,
     diagnoseSkill: 0,
     operationSkill: 0,
+
     randomD: 0,
     randomO: 0,
+
     diagnoseResult: '',
     morphine: 0,
     operationPlace: 0,
+    heartBeatCount: 0
   });
 
   useEffect(() => {
     let stateC = { ...state }
     if (page === 4) {
       let stateArr = Object.values(stateC).slice(0, 5).sort(function (a, b) { return a - b })
-      console.log(stateArr)
-      let maxComplication = stateArr[4]
-      console.log(maxComplication)
-      let predMaxComplication = stateArr[3]
-      console.log(predMaxComplication)
+      stateC.maxComplication = stateArr[4]
+
       let diagnoseFinal = stateC.diagnoseSkill + stateC.randomD
-      console.log(diagnoseFinal)
-      if (diagnoseFinal > maxComplication) {
+      if (diagnoseFinal > stateC.maxComplication) {
         stateC.diagnoseResult = 'Качественный диагноз. Операция обещает протекать спокойно'
         stateC.operationSkill += 3
-      } else if (diagnoseFinal === maxComplication) {
+      } else if (diagnoseFinal === stateC.maxComplication) {
         stateC.diagnoseResult = 'Смешанный диагноз. Операция будет не из простых'
         stateC.operationSkill += 0
-      } else if (diagnoseFinal < maxComplication) {
+      } else if (diagnoseFinal < stateC.maxComplication) {
         stateC.diagnoseResult = 'Посредственный диагноз. Операция будет тяжелой'
         stateC.operationSkill -= 3
       }
-      console.log(stateC)
       const result = { ...state, ...stateC };
       setState(result);
     }
     if (page === 6) {
-      if ((stateC.operationSkill + stateC.morphine + stateC.operationPlace + stateC.randomO) > 5) {
+      if ((stateC.operationSkill + stateC.morphine + stateC.operationPlace + stateC.randomO + stateC.heartBeatCount) > stateC.maxComplication) {
         setOperationSucces(true)
       } else {
         setOperationSucces(false)
@@ -66,17 +67,10 @@ const Operation = () => {
     const result = { ...state, ...values };
     setState(result);
     const newPage = page + 1;
-    console.log("result", result);
 
     setPage(newPage);
-    // if (newPage === 6) {
-    //   onSubmit(result);
-    // }
   };
 
-  const onSubmit = (result) => {
-    console.log("result", result);
-  };
 
   return (
     <div>

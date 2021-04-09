@@ -52,7 +52,7 @@ const Page3 = (props) => {
         }
         //выставление скилла диагноза и операции
         pageResult.diagnoseSkill = props.medicSkill * 2
-        pageResult.operationSkill = props.medicSkill * 1.5
+        pageResult.operationSkill = props.medicSkill
         props.onNext(pageResult)
     };
 
