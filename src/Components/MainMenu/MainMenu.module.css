@@ -13,3 +13,11 @@
     margin: 5%;
     flex: 1 1 auto;
 }
+
+.version {
+    font-size: small;
+    color: gray;
+    z-index: 2;
+    display: flex;
+    justify-self: flex-end;
+}

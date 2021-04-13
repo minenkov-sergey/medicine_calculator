@@ -10,12 +10,15 @@ const MainMenu = () => {
         history.push('/operation/');
     }
     return (
-        <div className={styles.mainMenu}>
-            <button className="btn btn-secondary" onClick={handleClickOperation}>Начать операцию</button>
-            <button className="btn btn-outline-secondary" >Проверить навыки</button>
-            <button className="btn btn-outline-secondary" >Добавить снаряжение</button>
-            <button className="btn btn-secondary" >Статистика</button>
-        </div>
+        <>
+            <div className={styles.mainMenu}>
+                <button className="btn btn-secondary" onClick={handleClickOperation}>Начать операцию</button>
+                <button className="btn btn-outline-secondary" >Проверить навыки</button>
+                <button className="btn btn-outline-secondary" >Добавить снаряжение</button>
+                <button className="btn btn-secondary" >Статистика</button>
+            </div>
+            <div className={styles.version}> v 0.0.8 </div>
+        </>
 
     )
 }

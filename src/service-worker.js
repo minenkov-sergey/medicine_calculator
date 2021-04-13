@@ -79,6 +79,10 @@ let urlsToCache = [
   '/assets/body.png',
   '/assets/arms.png',
   '/assets/legs.png',
+  '/assets/head_check.png',
+  '/assets/body_check.png',
+  '/assets/arms_check.png',
+  '/assets/legs_check.png',
 
 ];
 

@@ -5,6 +5,10 @@ import head from '../../../../assets/head.png'
 import body from '../../../../assets/body.png'
 import arms from '../../../../assets/arms.png'
 import legs from '../../../../assets/legs.png'
+import head_c from '../../../../assets/head_check.png'
+import body_c from '../../../../assets/body_check.png'
+import arms_c from '../../../../assets/arms_check.png'
+import legs_c from '../../../../assets/legs_check.png'
 
 const Page2 = (props) => {
 
@@ -80,16 +84,20 @@ const Page2 = (props) => {
             <span className={styles.header}>Место ранения</span>
             <div className={`btn-group ${styles.manequin}`} role="group" onChange={handleWoundPlace}>
                 <input type="radio" className={`btn-check`} name="place" id="place1" autoComplete="off" value={'5,1,2,2,0,головы/'} />
-                <label className={`btn btn-outline-secondary ${styles.head} `} htmlFor="place1"><img src={head} alt='head' /></label>
+                <label className={`${styles.head} `} htmlFor="place1">
+                    {woundPlace == '5,1,2,2,0,головы/' ? <img src={head_c} alt='head_c' /> : <img src={head} alt='head' />} </label>
 
                 <input type="radio" className={`btn-check `} name="place" id="place2" autoComplete="off" value={'1,1,1,0,1,руки/'} />
-                <label className={`btn btn-outline-secondary ${styles.hands}`} htmlFor="place2"><img src={arms} alt='arms' /></label>
+                <label className={`${styles.hands}`} htmlFor="place2">
+                    {woundPlace == '1,1,1,0,1,руки/' ? <img src={arms_c} alt='arms_c' /> : <img src={arms} alt='arms' />} </label>
 
                 <input type="radio" className={`btn-check `} name="place" id="place3" autoComplete="off" value={'3,1,1,0,1,туловища/'} />
-                <label className={`btn btn-outline-secondary ${styles.body}`} htmlFor="place3"><img src={body} alt='body' /></label>
+                <label className={`${styles.body}`} htmlFor="place3">
+                    {woundPlace == '3,1,1,0,1,туловища/' ? <img src={body_c} alt='body_c' /> : <img src={body} alt='body' />} </label>
 
                 <input type="radio" className={`btn-check `} name="place" id="place4" autoComplete="off" value={'1,1,1,0,1,ноги/'} />
-                <label className={`btn btn-outline-secondary ${styles.legs}`} htmlFor="place4"><img src={legs} alt='legs' /></label>
+                <label className={` ${styles.legs}`} htmlFor="place4">
+                    {woundPlace == '1,1,1,0,1,ноги/' ? <img src={legs_c} alt='legs_c' /> : <img src={legs} alt='legs' />} </label>
             </div>
             <div className={styles.nextButton}>
                 <NextButton

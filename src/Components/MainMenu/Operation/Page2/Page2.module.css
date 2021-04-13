@@ -25,17 +25,19 @@
 }
 
 .manequin label {
-  display: inline-block;
+  display: flex;
   border: 0;
   padding: 0;
   width: inherit;
 }
 
 .manequin .head img {
+  margin: auto;
   width: 50%;
 }
 
 .manequin .hands {
+  margin: auto;
   z-index: 0;
   position: absolute;
   top: 26%;
@@ -43,15 +45,20 @@
 }
 
 .manequin .hands img {
+  margin: auto;
   width: 100%;
 }
 
 .manequin .body img {
+  z-index: 1;
+  margin: auto;
   width: inherit;
 }
 
 .manequin .legs img {
+  margin: auto;
   width: inherit;
+  color: red;
 }
 
 .nextButton {

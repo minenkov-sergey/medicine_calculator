@@ -126,7 +126,7 @@ const Page3 = (props) => {
                 <input type="checkbox" className="btn-check" id="symptom19" autoComplete="off" value={'1,1,2,1,0, контакт с артефактами/'} check={'false'} />
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom19">Недавний контакт с артефактами</label>
 
-                <input type="checkbox" className="btn-check" id="symptom20" autoComplete="off" value={'8,8,8,8,8, без сознания/'} check={'false'} />
+                <input type="checkbox" className="btn-check" id="symptom20" autoComplete="off" value={'3,3,3,3,3, без сознания/'} check={'false'} />
                 <label className={`btn btn-outline-secondary ${styles.buttonText}`} htmlFor="symptom20">Без сознания</label>
             </div>
             <div className={styles.nextButton}>
