@@ -15,9 +15,9 @@ const MainMenu = () => {
                 <button className="btn btn-secondary" onClick={handleClickOperation}>Начать операцию</button>
                 <button className="btn btn-outline-secondary" >Проверить навыки</button>
                 <button className="btn btn-outline-secondary" >Добавить снаряжение</button>
-                <button className="btn btn-secondary" >Статистика</button>
+                <button className="btn btn-outline-secondary" >Статистика</button>
             </div>
-            <div className={styles.version}> v 0.0.8 </div>
+            {/* <div className={styles.version}> v 0.0.8 </div> */}
         </>
 
     )

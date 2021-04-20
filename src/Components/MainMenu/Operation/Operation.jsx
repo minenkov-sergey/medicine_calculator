@@ -80,7 +80,7 @@ const Operation = () => {
       {page === 4 && <Page4 {...state} onNext={onNext} />}
       {page === 5 && <Page5 {...state} onNext={onNext} />}
       {page === 6 && <OperationResult isOperationSucces={isOperationSucces} />}
-      <TestCounter {...state} />
+      {/* <TestCounter {...state} /> */}
     </div>
   );
 };
